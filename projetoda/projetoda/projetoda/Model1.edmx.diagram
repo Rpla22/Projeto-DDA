@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69b29791ac0f4e21b1984638e03b178f" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.Cliente" Width="1.5" PointX="0.875" PointY="3.5" />
+        <EntityTypeShape EntityType="Model1.Casa" Width="1.5" PointX="9.625" PointY="2.875" />
+        <EntityTypeShape EntityType="Model1.CasaVendavel" Width="1.5" PointX="9.625" PointY="6.875" />
+        <InheritanceConnector EntityType="Model1.CasaVendavel" />
+        <EntityTypeShape EntityType="Model1.CasaArrendavel" Width="1.5" PointX="9.75" PointY="0.5" />
+        <InheritanceConnector EntityType="Model1.CasaArrendavel" />
+        <EntityTypeShape EntityType="Model1.Limpeza" Width="1.5" PointX="7" PointY="4" />
+        <EntityTypeShape EntityType="Model1.Servico" Width="1.5" PointX="4.125" PointY="4" />
+        <EntityTypeShape EntityType="Model1.Arrendamento" Width="1.5" PointX="4.875" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.Venda" Width="1.5" PointX="4.875" PointY="6.875" />
+        <AssociationConnector Association="Model1.ServicoLimpeza" />
+        <AssociationConnector Association="Model1.LimpezaCasa" />
+        <AssociationConnector Association="Model1.ArrendamentoCasaArrendavel" />
+        <AssociationConnector Association="Model1.VendaCasaVendavel" />
+        <AssociationConnector Association="Model1.ClienteVenda" />
+        <AssociationConnector Association="Model1.ClienteCasa" />
+        <AssociationConnector Association="Model1.ClienteArrendamento" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
