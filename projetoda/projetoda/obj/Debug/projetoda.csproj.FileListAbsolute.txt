@@ -1,0 +1,9 @@
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\obj\Debug\projetoda.csprojAssemblyReference.cache
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\obj\Debug\projetoda.Properties.Resources.resources
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\obj\Debug\projetoda.csproj.GenerateResource.cache
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\obj\Debug\projetoda.csproj.CoreCompileInputs.cache
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\bin\Debug\projetoda.exe.config
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\bin\Debug\projetoda.exe
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\bin\Debug\projetoda.pdb
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\obj\Debug\projetoda.exe
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\projetoda\projetoda\obj\Debug\projetoda.pdb
