@@ -40,6 +40,7 @@
             this.bt_casas.TabIndex = 3;
             this.bt_casas.Text = "Casas";
             this.bt_casas.UseVisualStyleBackColor = true;
+            this.bt_casas.Click += new System.EventHandler(this.bt_casas_Click);
             // 
             // bt_clientes
             // 
@@ -58,7 +59,10 @@
             this.ClientSize = new System.Drawing.Size(443, 336);
             this.Controls.Add(this.bt_casas);
             this.Controls.Add(this.bt_clientes);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ImoDA";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImoDA";
             this.ResumeLayout(false);
 

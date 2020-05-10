@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Casas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Casas.Designer.cs">
+      <DependentUpon>Casas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Limpezas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Limpezas.Designer.cs">
+      <DependentUpon>Limpezas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImoDA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,8 +125,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Casas.resx">
+      <DependentUpon>Casas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Limpezas.resx">
+      <DependentUpon>Limpezas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImoDA.resx">
       <DependentUpon>ImoDA.cs</DependentUpon>

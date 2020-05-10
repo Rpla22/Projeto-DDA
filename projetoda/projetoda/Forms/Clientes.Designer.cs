@@ -98,11 +98,13 @@
             this.dataGridViewTextBoxColumn5});
             this.clienteSetDataGridView.DataSource = this.clienteSetBindingSource;
             this.clienteSetDataGridView.Location = new System.Drawing.Point(12, 121);
+            this.clienteSetDataGridView.MultiSelect = false;
             this.clienteSetDataGridView.Name = "clienteSetDataGridView";
             this.clienteSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clienteSetDataGridView.Size = new System.Drawing.Size(375, 528);
             this.clienteSetDataGridView.TabIndex = 1;
             this.clienteSetDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clienteSetDataGridView_CellClick);
+            this.clienteSetDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clienteSetDataGridView_CellContentClick);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -293,8 +295,12 @@
             this.ClientSize = new System.Drawing.Size(711, 671);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.clienteSetDataGridView);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Clientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clientes_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetDataGridView)).EndInit();

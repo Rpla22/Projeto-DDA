@@ -155,5 +155,18 @@ namespace ProjetoDA.Forms
             }
             return functionReturnValue;
         }
+
+        private void Clientes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ImoDA imoda = new ImoDA();
+            this.Hide();
+            imoda.Show();
+        }
+
+        private void clienteSetDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
+    
 }

@@ -25,5 +25,12 @@ namespace ProjetoDA
             this.Hide();
             clientes.Show();
         }
+
+        private void bt_casas_Click(object sender, EventArgs e)
+        {
+            Casas casas = new Casas();
+            this.Hide();
+            casas.Show();
+        }
     }
 }
