@@ -155,6 +155,7 @@ namespace ProjetoDA.Forms
             }
             return functionReturnValue;
         }
+<<<<<<< HEAD
 
         private void Clientes_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -169,4 +170,7 @@ namespace ProjetoDA.Forms
         }
     }
     
+=======
+    }
+>>>>>>> develop
 }
