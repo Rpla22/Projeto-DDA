@@ -30,7 +30,21 @@ namespace ProjetoDA.Models
         public string NumeroWc { get; set; }
         public string NumeroPisos { get; set; }
         public string Tipo { get; set; }
-    
+
+        public Casa(string localidade, string rua, string numero, string andar, string area, string numeroAssoalhadas, string numeroWc, string numeroPisos, string tipo, Cliente cliente)
+        {
+            Localidade = localidade;
+            Rua = rua;
+            Numero = numero;
+            Andar = andar;
+            Area = area;
+            NumeroAssoalhadas = numeroAssoalhadas;
+            NumeroWc = numeroWc;
+            NumeroPisos = numeroPisos;
+            Tipo = tipo;
+            Cliente = cliente;
+        }
+
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Limpeza> Limpeza { get; set; }

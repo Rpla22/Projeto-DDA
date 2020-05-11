@@ -16,3 +16,5 @@ C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\De
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.csproj.CopyComplete
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Casas.resources
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Limpezas.resources
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Arrendamentos.resources
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Venda.resources

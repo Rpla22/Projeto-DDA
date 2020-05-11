@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Arrendamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Arrendamentos.Designer.cs">
+      <DependentUpon>Arrendamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Casas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,12 @@
     </Compile>
     <Compile Include="Forms\Limpezas.Designer.cs">
       <DependentUpon>Limpezas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Venda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Venda.Designer.cs">
+      <DependentUpon>Venda.cs</DependentUpon>
     </Compile>
     <Compile Include="ImoDA.cs">
       <SubType>Form</SubType>
@@ -125,6 +137,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Arrendamentos.resx">
+      <DependentUpon>Arrendamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Casas.resx">
       <DependentUpon>Casas.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Limpezas.resx">
       <DependentUpon>Limpezas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Venda.resx">
+      <DependentUpon>Venda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImoDA.resx">
       <DependentUpon>ImoDA.cs</DependentUpon>

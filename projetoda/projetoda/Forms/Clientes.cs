@@ -21,16 +21,16 @@ namespace ProjetoDA.Forms
         {
             
             InitializeComponent();
-            imoDA = new ModelImoDaContainer();
-            lista_cliente = imoDA.ClienteSet.ToList();
+            imoDA = new ModelImoDaContainer();           
             LerDados();
+            lista_cliente = imoDA.ClienteSet.ToList();
         }
 
         private void LerDados()
         {
-            (from cliente in imoDA.ClienteSet
+             (from cliente in imoDA.ClienteSet
              orderby cliente.IdCliente
-             select cliente).Load();
+             select cliente).ToList();
             clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
         }
        
@@ -85,20 +85,6 @@ namespace ProjetoDA.Forms
 
         private void clienteSetDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = clienteSetDataGridView.CurrentCell.RowIndex;
-            
-            if (index == -1)
-            {
-                return;
-            }                       
-            tb_nome.Text = lista_cliente[index].Nome;
-            tb_nif.Text = lista_cliente[index].NIF;
-            tb_morada.Text = lista_cliente[index].Morada;
-            tb_contacto.Text = lista_cliente[index].Contacto;
-
-            listBox1.DataSource = lista_cliente[index].Casas.ToList();
-            listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
-            listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
         }
 
 
@@ -181,6 +167,34 @@ namespace ProjetoDA.Forms
             // TODO: This line of code loads data into the 'imo_DADataSet.ClienteSet' table. You can move, or remove it, as needed.
             this.clienteSetTableAdapter.Fill(this.imo_DADataSet.ClienteSet);
 
+        }
+
+        private void tb_nif_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clienteSetDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void clienteSetDataGridView_Click(object sender, EventArgs e)
+        {
+            int index = clienteSetDataGridView.CurrentCell.RowIndex;
+
+            if (index == -1)
+            {
+                return;
+            }
+            tb_nome.Text = lista_cliente[index].Nome;
+            tb_nif.Text = lista_cliente[index].NIF;
+            tb_morada.Text = lista_cliente[index].Morada;
+            tb_contacto.Text = lista_cliente[index].Contacto;
+
+            listBox1.DataSource = lista_cliente[index].Casas.ToList();
+            listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
+            listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
         }
     }
     
