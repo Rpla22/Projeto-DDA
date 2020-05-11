@@ -14,12 +14,6 @@ namespace ProjetoDA.Models
     
     public partial class Cliente
     {
-        public int IdCliente { get; set; }
-        public string Nome { get; set; }
-        public string NIF { get; set; }
-        public string Morada { get; set; }
-        public string Contacto { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
         {
@@ -27,18 +21,19 @@ namespace ProjetoDA.Models
             this.Casas = new HashSet<Casa>();
             this.Arrendamentos = new HashSet<Arrendamento>();
         }
+    
+        public int IdCliente { get; set; }
+        public string Nome { get; set; }
+        public string NIF { get; set; }
+        public string Morada { get; set; }
+        public string Contacto { get; set; }
 
-        public Cliente(string nome, string nif, string morada, string contacto)
+        public Cliente( string nome, string nif, string morada, string contacto)
         {
-            this.Nome = nome;
-            this.NIF = nif;
-            this.Morada = morada;
-            this.Contacto = contacto;
-        }
-
-        public override string ToString()
-        {
-            return Nome;
+            Nome = nome;
+            NIF = nif;
+            Morada = morada;
+            Contacto = contacto;
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

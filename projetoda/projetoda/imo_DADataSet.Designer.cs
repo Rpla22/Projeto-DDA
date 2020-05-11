@@ -20,9 +20,9 @@ namespace ProjetoDA {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("imo_DADataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("imo_DADataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class imo_DADataSet1 : global::System.Data.DataSet {
+    public partial class imo_DADataSet : global::System.Data.DataSet {
         
         private ArrendamentoSetDataTable tableArrendamentoSet;
         
@@ -62,7 +62,7 @@ namespace ProjetoDA {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public imo_DADataSet1() {
+        public imo_DADataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -73,7 +73,7 @@ namespace ProjetoDA {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected imo_DADataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected imo_DADataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -250,7 +250,7 @@ namespace ProjetoDA {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            imo_DADataSet1 cln = ((imo_DADataSet1)(base.Clone()));
+            imo_DADataSet cln = ((imo_DADataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -394,9 +394,9 @@ namespace ProjetoDA {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "imo_DADataSet1";
+            this.DataSetName = "imo_DADataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/imo_DADataSet1.xsd";
+            this.Namespace = "http://tempuri.org/imo_DADataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableArrendamentoSet = new ArrendamentoSetDataTable();
@@ -512,7 +512,7 @@ namespace ProjetoDA {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            imo_DADataSet1 ds = new imo_DADataSet1();
+            imo_DADataSet ds = new imo_DADataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -866,7 +866,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1290,7 +1290,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1583,7 +1583,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1876,7 +1876,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2202,7 +2202,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2497,7 +2497,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2824,7 +2824,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3170,7 +3170,7 @@ namespace ProjetoDA {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                imo_DADataSet1 ds = new imo_DADataSet1();
+                imo_DADataSet ds = new imo_DADataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4334,7 +4334,7 @@ namespace ProjetoDA {
         }
     }
 }
-namespace ProjetoDA.imo_DADataSet1TableAdapters {
+namespace ProjetoDA.imo_DADataSetTableAdapters {
     
     
     /// <summary>
@@ -4504,7 +4504,7 @@ SELECT IdArrendamento, InicioContrato, DuracaoMeses, Renovavel, Arrendatario_IdC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4522,7 +4522,7 @@ SELECT IdArrendamento, InicioContrato, DuracaoMeses, Renovavel, Arrendatario_IdC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.ArrendamentoSetDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.ArrendamentoSetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4535,9 +4535,9 @@ SELECT IdArrendamento, InicioContrato, DuracaoMeses, Renovavel, Arrendatario_IdC
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.ArrendamentoSetDataTable GetData() {
+        public virtual imo_DADataSet.ArrendamentoSetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.ArrendamentoSetDataTable dataTable = new imo_DADataSet1.ArrendamentoSetDataTable();
+            imo_DADataSet.ArrendamentoSetDataTable dataTable = new imo_DADataSet.ArrendamentoSetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4545,14 +4545,14 @@ SELECT IdArrendamento, InicioContrato, DuracaoMeses, Renovavel, Arrendatario_IdC
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.ArrendamentoSetDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.ArrendamentoSetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "ArrendamentoSet");
         }
         
@@ -4893,7 +4893,7 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4911,7 +4911,7 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.CasaSetDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.CasaSetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4924,9 +4924,9 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.CasaSetDataTable GetData() {
+        public virtual imo_DADataSet.CasaSetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.CasaSetDataTable dataTable = new imo_DADataSet1.CasaSetDataTable();
+            imo_DADataSet.CasaSetDataTable dataTable = new imo_DADataSet.CasaSetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4934,14 +4934,14 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.CasaSetDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.CasaSetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "CasaSet");
         }
         
@@ -5303,7 +5303,7 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5320,7 +5320,7 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.CasaSet_CasaArrendavelDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.CasaSet_CasaArrendavelDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5333,9 +5333,9 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.CasaSet_CasaArrendavelDataTable GetData() {
+        public virtual imo_DADataSet.CasaSet_CasaArrendavelDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.CasaSet_CasaArrendavelDataTable dataTable = new imo_DADataSet1.CasaSet_CasaArrendavelDataTable();
+            imo_DADataSet.CasaSet_CasaArrendavelDataTable dataTable = new imo_DADataSet.CasaSet_CasaArrendavelDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5343,14 +5343,14 @@ SELECT IdCasa, Localidade, Rua, Numero, Andar, Area, NumeroAssoalhadas, NumeroWc
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.CasaSet_CasaArrendavelDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.CasaSet_CasaArrendavelDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "CasaSet_CasaArrendavel");
         }
         
@@ -5623,7 +5623,7 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5640,7 +5640,7 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.CasaSet_CasaVendavelDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.CasaSet_CasaVendavelDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5653,9 +5653,9 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.CasaSet_CasaVendavelDataTable GetData() {
+        public virtual imo_DADataSet.CasaSet_CasaVendavelDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.CasaSet_CasaVendavelDataTable dataTable = new imo_DADataSet1.CasaSet_CasaVendavelDataTable();
+            imo_DADataSet.CasaSet_CasaVendavelDataTable dataTable = new imo_DADataSet.CasaSet_CasaVendavelDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5663,14 +5663,14 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.CasaSet_CasaVendavelDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.CasaSet_CasaVendavelDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "CasaSet_CasaVendavel");
         }
         
@@ -5950,7 +5950,7 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5967,7 +5967,7 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.ClienteSetDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.ClienteSetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5980,9 +5980,9 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.ClienteSetDataTable GetData() {
+        public virtual imo_DADataSet.ClienteSetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.ClienteSetDataTable dataTable = new imo_DADataSet1.ClienteSetDataTable();
+            imo_DADataSet.ClienteSetDataTable dataTable = new imo_DADataSet.ClienteSetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5990,14 +5990,14 @@ SELECT ValorBaseVenda, ValorComissao, IdCasa FROM CasaSet_CasaVendavel WHERE (Id
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.ClienteSetDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.ClienteSetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "ClienteSet");
         }
         
@@ -6298,7 +6298,7 @@ SELECT IdLimpeza, Data, Casa_IdCasa FROM LimpezaSet WHERE (IdLimpeza = @IdLimpez
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6315,7 +6315,7 @@ SELECT IdLimpeza, Data, Casa_IdCasa FROM LimpezaSet WHERE (IdLimpeza = @IdLimpez
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.LimpezaSetDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.LimpezaSetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6328,9 +6328,9 @@ SELECT IdLimpeza, Data, Casa_IdCasa FROM LimpezaSet WHERE (IdLimpeza = @IdLimpez
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.LimpezaSetDataTable GetData() {
+        public virtual imo_DADataSet.LimpezaSetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.LimpezaSetDataTable dataTable = new imo_DADataSet1.LimpezaSetDataTable();
+            imo_DADataSet.LimpezaSetDataTable dataTable = new imo_DADataSet.LimpezaSetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6338,14 +6338,14 @@ SELECT IdLimpeza, Data, Casa_IdCasa FROM LimpezaSet WHERE (IdLimpeza = @IdLimpez
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.LimpezaSetDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.LimpezaSetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "LimpezaSet");
         }
         
@@ -6643,7 +6643,7 @@ SELECT IdServico, Descricao, Valor, Unidades, Limpeza_IdLimpeza FROM ServicoSet 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6661,7 +6661,7 @@ SELECT IdServico, Descricao, Valor, Unidades, Limpeza_IdLimpeza FROM ServicoSet 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.ServicoSetDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.ServicoSetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6674,9 +6674,9 @@ SELECT IdServico, Descricao, Valor, Unidades, Limpeza_IdLimpeza FROM ServicoSet 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.ServicoSetDataTable GetData() {
+        public virtual imo_DADataSet.ServicoSetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.ServicoSetDataTable dataTable = new imo_DADataSet1.ServicoSetDataTable();
+            imo_DADataSet.ServicoSetDataTable dataTable = new imo_DADataSet.ServicoSetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6684,14 +6684,14 @@ SELECT IdServico, Descricao, Valor, Unidades, Limpeza_IdLimpeza FROM ServicoSet 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.ServicoSetDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.ServicoSetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "ServicoSet");
         }
         
@@ -7016,7 +7016,7 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString;
+            this._connection.ConnectionString = global::ProjetoDA.Properties.Settings.Default.imo_DAConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7034,7 +7034,7 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(imo_DADataSet1.VendaSetDataTable dataTable) {
+        public virtual int Fill(imo_DADataSet.VendaSetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7047,9 +7047,9 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual imo_DADataSet1.VendaSetDataTable GetData() {
+        public virtual imo_DADataSet.VendaSetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            imo_DADataSet1.VendaSetDataTable dataTable = new imo_DADataSet1.VendaSetDataTable();
+            imo_DADataSet.VendaSetDataTable dataTable = new imo_DADataSet.VendaSetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7057,14 +7057,14 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1.VendaSetDataTable dataTable) {
+        public virtual int Update(imo_DADataSet.VendaSetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(imo_DADataSet1 dataSet) {
+        public virtual int Update(imo_DADataSet dataSet) {
             return this.Adapter.Update(dataSet, "VendaSet");
         }
         
@@ -7454,7 +7454,7 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(imo_DADataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(imo_DADataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._clienteSetTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ClienteSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -7536,7 +7536,7 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(imo_DADataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(imo_DADataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._clienteSetTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ClienteSet.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -7610,7 +7610,7 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(imo_DADataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(imo_DADataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._vendaSetTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.VendaSet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -7708,7 +7708,7 @@ SELECT IdVenda, DataVenda, ValorNegociado, ComissaoNegociada, Comprador_IdClient
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(imo_DADataSet1 dataSet) {
+        public virtual int UpdateAll(imo_DADataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

@@ -15,14 +15,14 @@ namespace ProjetoDA.Forms
 {
     public partial class Casas : Form
     {
-        private Model1Container imoDA;
+        private ModelImoDaContainer imoDA;
         private List<Cliente> lista_cliente;
 
         public Casas()
         {
             
             InitializeComponent();
-            imoDA = new Model1Container();
+            imoDA = new ModelImoDaContainer();
             LerDados();
         }
 
@@ -38,14 +38,16 @@ namespace ProjetoDA.Forms
         {
             this.Validate();
             this.casaSetBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.imo_DADataSet1);
+            this.tableAdapterManager.UpdateAll(this.imo_DADataSet);
 
         }
 
         private void Casas_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'imo_DADataSet.CasaSet' table. You can move, or remove it, as needed.
+            this.casaSetTableAdapter.Fill(this.imo_DADataSet.CasaSet);
             // TODO: This line of code loads data into the 'imo_DADataSet1.CasaSet' table. You can move, or remove it, as needed.
-            this.casaSetTableAdapter.Fill(this.imo_DADataSet1.CasaSet);
+            this.casaSetTableAdapter.Fill(this.imo_DADataSet.CasaSet);
 
         }
 
@@ -110,6 +112,19 @@ namespace ProjetoDA.Forms
             Limpezas limpezas = new Limpezas();
             this.Hide();
             limpezas.Show();
+        }
+
+        private void casaSetBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.casaSetBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.imo_DADataSet);
+
+        }
+
+        private void casaSetDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
     
