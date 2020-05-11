@@ -14,14 +14,14 @@ namespace ProjetoDA.Forms
 {
     public partial class Clientes : Form
     {
-        private Model1Container imoDA;
+        private ModelImoDaContainer imoDA;
         private List<Cliente> lista_cliente;
 
         public Clientes()
         {
             
             InitializeComponent();
-            imoDA = new Model1Container();
+            imoDA = new ModelImoDaContainer();
             lista_cliente = imoDA.ClienteSet.ToList();
             LerDados();
         }
@@ -165,6 +165,21 @@ namespace ProjetoDA.Forms
 
         private void clienteSetDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void clienteSetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.clienteSetBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.imo_DADataSet);
+
+        }
+
+        private void Clientes_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'imo_DADataSet.ClienteSet' table. You can move, or remove it, as needed.
+            this.clienteSetTableAdapter.Fill(this.imo_DADataSet.ClienteSet);
 
         }
     }
