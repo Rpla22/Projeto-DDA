@@ -14,8 +14,5 @@ C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\De
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\Debug\EntityFramework.xml
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.csproj.CopyComplete
-<<<<<<< HEAD
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Casas.resources
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Limpezas.resources
-=======
->>>>>>> develop
