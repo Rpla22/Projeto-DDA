@@ -215,6 +215,7 @@
             this.tb_nif.Name = "tb_nif";
             this.tb_nif.Size = new System.Drawing.Size(207, 20);
             this.tb_nif.TabIndex = 1;
+            this.tb_nif.TextChanged += new System.EventHandler(this.tb_nif_TextChanged);
             this.tb_nif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_nif_KeyPress);
             // 
             // tb_nome
@@ -253,7 +254,11 @@
             // 
             // clienteSetDataGridView
             // 
+            this.clienteSetDataGridView.AllowUserToAddRows = false;
+            this.clienteSetDataGridView.AllowUserToDeleteRows = false;
+            this.clienteSetDataGridView.AllowUserToResizeColumns = false;
             this.clienteSetDataGridView.AutoGenerateColumns = false;
+            this.clienteSetDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.clienteSetDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clienteSetDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -265,13 +270,13 @@
             this.clienteSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clienteSetDataGridView.Size = new System.Drawing.Size(375, 528);
             this.clienteSetDataGridView.TabIndex = 3;
+            this.clienteSetDataGridView.Click += new System.EventHandler(this.clienteSetDataGridView_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCliente";
             this.dataGridViewTextBoxColumn1.HeaderText = "IdCliente";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 

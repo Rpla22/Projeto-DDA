@@ -79,17 +79,9 @@
             this.casaSetTableAdapter = new ProjetoDA.imo_DADataSetTableAdapters.CasaSetTableAdapter();
             this.tableAdapterManager = new ProjetoDA.imo_DADataSetTableAdapters.TableAdapterManager();
             this.casaSetDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -267,6 +259,7 @@
             this.bt_guardar.TabIndex = 19;
             this.bt_guardar.Text = "Guardar";
             this.bt_guardar.UseVisualStyleBackColor = true;
+            this.bt_guardar.Click += new System.EventHandler(this.bt_guardar_Click);
             // 
             // bt_limpezas
             // 
@@ -502,6 +495,8 @@
             this.tb_andar.Name = "tb_andar";
             this.tb_andar.Size = new System.Drawing.Size(294, 20);
             this.tb_andar.TabIndex = 3;
+            this.tb_andar.TextChanged += new System.EventHandler(this.tb_andar_TextChanged);
+            this.tb_andar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_andar_KeyPress);
             // 
             // tb_numero
             // 
@@ -509,6 +504,8 @@
             this.tb_numero.Name = "tb_numero";
             this.tb_numero.Size = new System.Drawing.Size(294, 20);
             this.tb_numero.TabIndex = 2;
+            this.tb_numero.TextChanged += new System.EventHandler(this.tb_numero_TextChanged);
+            this.tb_numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_numero_KeyPress);
             // 
             // tb_rua
             // 
@@ -562,33 +559,23 @@
             // 
             // casaSetDataGridView
             // 
+            this.casaSetDataGridView.AllowUserToAddRows = false;
+            this.casaSetDataGridView.AllowUserToDeleteRows = false;
+            this.casaSetDataGridView.AllowUserToResizeRows = false;
             this.casaSetDataGridView.AutoGenerateColumns = false;
+            this.casaSetDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.casaSetDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.casaSetDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11});
+            this.dataGridViewTextBoxColumn4});
             this.casaSetDataGridView.DataSource = this.casaSetBindingSource;
-            this.casaSetDataGridView.Location = new System.Drawing.Point(12, 109);
+            this.casaSetDataGridView.Location = new System.Drawing.Point(12, 114);
+            this.casaSetDataGridView.MultiSelect = false;
             this.casaSetDataGridView.Name = "casaSetDataGridView";
-            this.casaSetDataGridView.Size = new System.Drawing.Size(355, 546);
+            this.casaSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.casaSetDataGridView.Size = new System.Drawing.Size(355, 541);
             this.casaSetDataGridView.TabIndex = 4;
-            this.casaSetDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.casaSetDataGridView_CellContentClick_1);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCasa";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IdCasa";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -607,48 +594,6 @@
             this.dataGridViewTextBoxColumn4.DataPropertyName = "Numero";
             this.dataGridViewTextBoxColumn4.HeaderText = "Numero";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Andar";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Andar";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Area";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Area";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "NumeroAssoalhadas";
-            this.dataGridViewTextBoxColumn7.HeaderText = "NumeroAssoalhadas";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "NumeroWc";
-            this.dataGridViewTextBoxColumn8.HeaderText = "NumeroWc";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "NumeroPisos";
-            this.dataGridViewTextBoxColumn9.HeaderText = "NumeroPisos";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Tipo";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Cliente_IdCliente";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Cliente_IdCliente";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
             // Casas
             // 
@@ -733,16 +678,8 @@
         private imo_DADataSetTableAdapters.CasaSetTableAdapter casaSetTableAdapter;
         private imo_DADataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView casaSetDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
     }
 }
