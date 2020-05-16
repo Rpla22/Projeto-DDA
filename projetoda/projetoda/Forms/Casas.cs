@@ -55,13 +55,6 @@ namespace ProjetoDA.Forms
 
         private void Casas_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'imo_DADataSet.CasaSet' table. You can move, or remove it, as needed.
-            this.casaSetTableAdapter.Fill(this.imo_DADataSet.CasaSet);
-            // TODO: This line of code loads data into the 'imo_DADataSet.CasaSet' table. You can move, or remove it, as needed.
-            this.casaSetTableAdapter.Fill(this.imo_DADataSet.CasaSet);
-            // TODO: This line of code loads data into the 'imo_DADataSet1.CasaSet' table. You can move, or remove it, as needed.
-            this.casaSetTableAdapter.Fill(this.imo_DADataSet.CasaSet);
-
         }
 
         private void label12_Click(object sender, EventArgs e)
@@ -76,16 +69,10 @@ namespace ProjetoDA.Forms
 
         private void Casas_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ImoDA imoda = new ImoDA();
-            this.Hide();
-            imoda.Show();
         }
 
         private void Casas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ImoDA imoda = new ImoDA();
-            this.Hide();
-            imoda.Show();
         }
 
         private void casaSetDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

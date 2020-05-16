@@ -23,7 +23,6 @@ namespace ProjetoDA.Forms
             InitializeComponent();
             imoDA = new ModelImoDaContainer();           
             LerDados();
-            lista_cliente = imoDA.ClienteSet.ToList();
         }
 
         private void LerDados()
@@ -31,7 +30,9 @@ namespace ProjetoDA.Forms
              (from cliente in imoDA.ClienteSet
              orderby cliente.IdCliente
              select cliente).ToList();
+            clienteSetDataGridView.DataSource = null;
             clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+            lista_cliente = imoDA.ClienteSet.ToList();
         }
        
 
@@ -55,6 +56,11 @@ namespace ProjetoDA.Forms
                     DialogResult result = MessageBox.Show("Pretende alterar as informações do cliente com o NIF: " + cliente.NIF + "?", "O Cliente ja se encontra registado", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (Convert.ToString(result) == "Yes")
                     {
+                        cliente.Nome = tb_nome.Text;
+                        cliente.Morada = tb_morada.Text;
+                        cliente.Contacto = tb_contacto.Text;                      
+                        imoDA.SaveChanges();
+                        LerDados();
 
                     }
                     return;
@@ -144,9 +150,7 @@ namespace ProjetoDA.Forms
 
         private void Clientes_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ImoDA imoda = new ImoDA();
-            this.Hide();
-            imoda.Show();
+
         }
 
         private void clienteSetDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -192,10 +196,23 @@ namespace ProjetoDA.Forms
             tb_morada.Text = lista_cliente[index].Morada;
             tb_contacto.Text = lista_cliente[index].Contacto;
 
+
             listBox1.DataSource = lista_cliente[index].Casas.ToList();
             listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
             listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
         }
+
+        private void bt_novo_Click(object sender, EventArgs e)
+        {
+            tb_nome.Text = "";
+            tb_nif.Text = "";
+            tb_morada.Text = "";
+            tb_contacto.Text = "";
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
-    
 }

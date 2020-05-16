@@ -27,15 +27,7 @@ namespace ProjetoDA.Models
         public string NIF { get; set; }
         public string Morada { get; set; }
         public string Contacto { get; set; }
-
-        public Cliente( string nome, string nif, string morada, string contacto)
-        {
-            Nome = nome;
-            NIF = nif;
-            Morada = morada;
-            Contacto = contacto;
-        }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Aquisicoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

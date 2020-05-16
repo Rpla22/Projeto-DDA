@@ -22,15 +22,34 @@ namespace ProjetoDA
         private void bt_clientes_Click(object sender, EventArgs e)
         {
             Clientes clientes = new Clientes();
+            clientes.FormClosed += Clientes_FormClosed;
+
             this.Hide();
             clientes.Show();
+        }
+
+        private void Clientes_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
 
         private void bt_casas_Click(object sender, EventArgs e)
         {
             Casas casas = new Casas();
+            casas.FormClosed += Casas_FormClosed;
+
             this.Hide();
             casas.Show();
+        }
+
+        private void Casas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void ImoDA_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
