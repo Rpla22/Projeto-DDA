@@ -64,6 +64,7 @@
             this.Name = "ImoDA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImoDA";
+            this.Load += new System.EventHandler(this.ImoDA_Load);
             this.ResumeLayout(false);
 
         }

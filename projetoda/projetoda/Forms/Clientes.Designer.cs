@@ -54,6 +54,8 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetBindingSource)).BeginInit();
@@ -144,6 +146,7 @@
             this.bt_novo.TabIndex = 9;
             this.bt_novo.Text = "Novo";
             this.bt_novo.UseVisualStyleBackColor = true;
+            this.bt_novo.Click += new System.EventHandler(this.bt_novo_Click);
             // 
             // bt_guardar
             // 
@@ -277,6 +280,7 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCliente";
             this.dataGridViewTextBoxColumn1.HeaderText = "IdCliente";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -290,11 +294,29 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "NIF";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(375, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 38);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 5;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 671);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.clienteSetDataGridView);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -310,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -339,5 +362,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
