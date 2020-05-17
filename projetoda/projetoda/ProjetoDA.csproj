@@ -99,6 +99,7 @@
     <Compile Include="Models\Arrendamento.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Arrendamento.part.cs" />
     <Compile Include="Models\Casa.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>
@@ -137,6 +138,7 @@
     <Compile Include="Models\Venda.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Venda.part.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Arrendamentos.resx">

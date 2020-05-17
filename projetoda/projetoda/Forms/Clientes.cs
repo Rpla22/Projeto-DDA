@@ -19,27 +19,26 @@ namespace ProjetoDA.Forms
 
         public Clientes()
         {
-            
+            imoDA = new ModelImoDaContainer();
             InitializeComponent();
-            imoDA = new ModelImoDaContainer();           
+            cb_filtrar.Items.Add("ID");
+            cb_filtrar.Items.Add("Nome");
+            cb_filtrar.Items.Add("NIF");
             LerDados();
         }
 
         private void LerDados()
         {
-             (from cliente in imoDA.ClienteSet
+            imoDA.Dispose();
+            imoDA = new ModelImoDaContainer();
+            (from cliente in imoDA.ClienteSet
              orderby cliente.IdCliente
              select cliente).ToList();
             clienteSetDataGridView.DataSource = null;
             clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
-            lista_cliente = imoDA.ClienteSet.ToList();
+            lista_cliente = imoDA.ClienteSet.ToList();            
         }
        
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -87,10 +86,6 @@ namespace ProjetoDA.Forms
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void clienteSetDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
 
 
@@ -148,38 +143,11 @@ namespace ProjetoDA.Forms
             return functionReturnValue;
         }
 
-        private void Clientes_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
-        private void clienteSetDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void clienteSetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
             this.clienteSetBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.imo_DADataSet);
-
-        }
-
-        private void Clientes_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'imo_DADataSet.ClienteSet' table. You can move, or remove it, as needed.
-            this.clienteSetTableAdapter.Fill(this.imo_DADataSet.ClienteSet);
-
-        }
-
-        private void tb_nif_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void clienteSetDataGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
 
@@ -196,10 +164,15 @@ namespace ProjetoDA.Forms
             tb_morada.Text = lista_cliente[index].Morada;
             tb_contacto.Text = lista_cliente[index].Contacto;
 
-
-            listBox1.DataSource = lista_cliente[index].Casas.ToList();
-            listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
-            listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
+            try
+            {
+                listBox1.DataSource = lista_cliente[index].Casas.ToList();
+                listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
+                listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
+            }catch(Exception)
+            {
+            }
+            
         }
 
         private void bt_novo_Click(object sender, EventArgs e)
@@ -210,9 +183,84 @@ namespace ProjetoDA.Forms
             tb_contacto.Text = "";
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void bt_filtrar_Click(object sender, EventArgs e)
         {
+            imoDA.Dispose();
+            imoDA = new ModelImoDaContainer();
+            if (tb_filtrar.Text != "" && cb_filtrar.Text !="")
+            {
+                switch (cb_filtrar.Text)
+                {
+                    case "ID":
+                        foreach (Cliente local_cliente in lista_cliente)
+                        {
+                            if (tb_filtrar.Text == Convert.ToString(local_cliente.IdCliente))
+                            {
+                                (from cliente in imoDA.ClienteSet
+                                 where cliente.IdCliente.ToString().Contains(tb_filtrar.Text)
+                                 select cliente).ToList();
 
+                                clienteSetDataGridView.DataSource = null;
+                                clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+                                return;
+                            }
+                        }
+
+                        MessageBox.Show("Não foram encontrados dados correspondentes à pesquisa");
+                        break;
+
+                    case "Nome":
+                        foreach (Cliente local_cliente in lista_cliente)
+                        {
+                            if (local_cliente.Nome.ToString().ToUpper().Contains(tb_filtrar.Text.ToUpper()))
+                            {
+                                (from cliente in imoDA.ClienteSet
+                                 where cliente.Nome.ToString().Contains(tb_filtrar.Text)
+                                 select cliente).ToList();
+                                clienteSetDataGridView.DataSource = null;
+                                clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+                                return;
+                            }
+                        }
+
+                        MessageBox.Show("Não foram encontrados dados correspondentes à pesquisa");
+                        break;
+
+                    case "NIF":
+
+                        foreach (Cliente local_cliente in lista_cliente)
+                        {
+                            if (tb_filtrar.Text == local_cliente.NIF)
+                            {
+                                (from cliente in imoDA.ClienteSet
+                                 where cliente.NIF.ToString().Contains(tb_filtrar.Text)
+                                 select cliente).ToList();
+
+                                clienteSetDataGridView.DataSource = null;
+                                clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+                                return;
+                            }
+                        }
+
+                        MessageBox.Show("Não foram encontrados dados correspondentes à pesquisa");
+
+                        break;
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Campos Vazios");
+                LerDados();
+
+            }
+        }
+
+        private void bt_apagar_Click(object sender, EventArgs e)
+        {
+            int index = clienteSetDataGridView.CurrentCell.RowIndex ;
+            
         }
     }
 }
