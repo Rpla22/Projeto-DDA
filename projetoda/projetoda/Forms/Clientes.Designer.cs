@@ -54,8 +54,10 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tb_filtrar = new System.Windows.Forms.TextBox();
+            this.cb_filtrar = new System.Windows.Forms.ComboBox();
+            this.bt_apagar = new System.Windows.Forms.Button();
+            this.bt_filtrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetBindingSource)).BeginInit();
@@ -80,7 +82,7 @@
             this.groupBox1.Controls.Add(this.tb_morada);
             this.groupBox1.Controls.Add(this.tb_nif);
             this.groupBox1.Controls.Add(this.tb_nome);
-            this.groupBox1.Location = new System.Drawing.Point(393, 121);
+            this.groupBox1.Location = new System.Drawing.Point(393, 65);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(306, 528);
             this.groupBox1.TabIndex = 2;
@@ -184,7 +186,6 @@
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "NIF:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -218,7 +219,6 @@
             this.tb_nif.Name = "tb_nif";
             this.tb_nif.Size = new System.Drawing.Size(207, 20);
             this.tb_nif.TabIndex = 1;
-            this.tb_nif.TextChanged += new System.EventHandler(this.tb_nif_TextChanged);
             this.tb_nif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_nif_KeyPress);
             // 
             // tb_nome
@@ -268,10 +268,10 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.clienteSetDataGridView.DataSource = this.clienteSetBindingSource;
-            this.clienteSetDataGridView.Location = new System.Drawing.Point(12, 121);
+            this.clienteSetDataGridView.Location = new System.Drawing.Point(12, 65);
             this.clienteSetDataGridView.Name = "clienteSetDataGridView";
             this.clienteSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.clienteSetDataGridView.Size = new System.Drawing.Size(375, 528);
+            this.clienteSetDataGridView.Size = new System.Drawing.Size(375, 499);
             this.clienteSetDataGridView.TabIndex = 3;
             this.clienteSetDataGridView.Click += new System.EventHandler(this.clienteSetDataGridView_Click);
             // 
@@ -294,29 +294,50 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "NIF";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // textBox1
+            // tb_filtrar
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(375, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tb_filtrar.Location = new System.Drawing.Point(12, 12);
+            this.tb_filtrar.Name = "tb_filtrar";
+            this.tb_filtrar.Size = new System.Drawing.Size(375, 20);
+            this.tb_filtrar.TabIndex = 4;
             // 
-            // comboBox1
+            // cb_filtrar
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.cb_filtrar.FormattingEnabled = true;
+            this.cb_filtrar.Location = new System.Drawing.Point(12, 38);
+            this.cb_filtrar.Name = "cb_filtrar";
+            this.cb_filtrar.Size = new System.Drawing.Size(121, 21);
+            this.cb_filtrar.TabIndex = 5;
+            // 
+            // bt_apagar
+            // 
+            this.bt_apagar.Location = new System.Drawing.Point(12, 570);
+            this.bt_apagar.Name = "bt_apagar";
+            this.bt_apagar.Size = new System.Drawing.Size(375, 23);
+            this.bt_apagar.TabIndex = 6;
+            this.bt_apagar.Text = "Apagar";
+            this.bt_apagar.UseVisualStyleBackColor = true;
+            this.bt_apagar.Click += new System.EventHandler(this.bt_apagar_Click);
+            // 
+            // bt_filtrar
+            // 
+            this.bt_filtrar.Location = new System.Drawing.Point(139, 36);
+            this.bt_filtrar.Name = "bt_filtrar";
+            this.bt_filtrar.Size = new System.Drawing.Size(75, 23);
+            this.bt_filtrar.TabIndex = 7;
+            this.bt_filtrar.Text = "Filtrar";
+            this.bt_filtrar.UseVisualStyleBackColor = true;
+            this.bt_filtrar.Click += new System.EventHandler(this.bt_filtrar_Click);
             // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 671);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(719, 608);
+            this.Controls.Add(this.bt_filtrar);
+            this.Controls.Add(this.bt_apagar);
+            this.Controls.Add(this.cb_filtrar);
+            this.Controls.Add(this.tb_filtrar);
             this.Controls.Add(this.clienteSetDataGridView);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -324,8 +345,6 @@
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Clientes_FormClosed);
-            this.Load += new System.EventHandler(this.Clientes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).EndInit();
@@ -362,7 +381,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tb_filtrar;
+        private System.Windows.Forms.ComboBox cb_filtrar;
+        private System.Windows.Forms.Button bt_apagar;
+        private System.Windows.Forms.Button bt_filtrar;
     }
 }
