@@ -14,9 +14,16 @@ namespace ProjetoDA.Models
     
     public partial class CasaVendavel : Casa
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CasaVendavel()
+        {
+            this.Vendas = new HashSet<Venda>();
+        }
+    
         public string ValorBaseVenda { get; set; }
         public string ValorComissao { get; set; }
     
-        public virtual Venda Venda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetoDA.Models
 {
-    public partial class Venda
+    public partial class Venda 
     {
         public Venda(string dataVenda, string valorNegociado, string comissaoNegociada, Cliente comprador, CasaVendavel casaVendavel)
         {
@@ -21,5 +21,6 @@ namespace ProjetoDA.Models
         {
             return CasaVendavel.Numero + " " + CasaVendavel.Rua + " " + CasaVendavel.Localidade;
         }
+
     }
 }

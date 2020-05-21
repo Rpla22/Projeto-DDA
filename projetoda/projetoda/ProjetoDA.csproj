@@ -103,13 +103,15 @@
     <Compile Include="Models\Casa.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Casa.part.cs" />
     <Compile Include="Models\CasaArrendavel.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Casa.part.cs" />
+    <Compile Include="Models\CasaArrendavel.part.cs" />
     <Compile Include="Models\CasaVendavel.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CasaVendavel.part.cs" />
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>ModelImoDa.tt</DependentUpon>
     </Compile>

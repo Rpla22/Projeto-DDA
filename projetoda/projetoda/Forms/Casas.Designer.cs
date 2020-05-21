@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Casas));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.lb_id = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -42,8 +44,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.bt_nova = new System.Windows.Forms.Button();
-            this.bt_guardar = new System.Windows.Forms.Button();
             this.bt_limpezas = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.bt_venda_ver = new System.Windows.Forms.Button();
@@ -73,15 +73,18 @@
             this.tb_numero = new System.Windows.Forms.TextBox();
             this.tb_rua = new System.Windows.Forms.TextBox();
             this.tb_localidade = new System.Windows.Forms.TextBox();
+            this.bt_nova = new System.Windows.Forms.Button();
+            this.bt_guardar = new System.Windows.Forms.Button();
             this.bt_apagar = new System.Windows.Forms.Button();
             this.imo_DADataSet = new ProjetoDA.imo_DADataSet();
             this.casaSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.casaSetTableAdapter = new ProjetoDA.imo_DADataSetTableAdapters.CasaSetTableAdapter();
             this.tableAdapterManager = new ProjetoDA.imo_DADataSetTableAdapters.TableAdapterManager();
             this.casaSetDataGridView = new System.Windows.Forms.DataGridView();
+            this.IdCasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -92,10 +95,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaSetDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.lb_id);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label18);
@@ -108,8 +113,6 @@
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.bt_nova);
-            this.groupBox1.Controls.Add(this.bt_guardar);
             this.groupBox1.Controls.Add(this.bt_limpezas);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -125,12 +128,22 @@
             this.groupBox1.Controls.Add(this.tb_numero);
             this.groupBox1.Controls.Add(this.tb_rua);
             this.groupBox1.Controls.Add(this.tb_localidade);
-            this.groupBox1.Location = new System.Drawing.Point(373, 106);
+            this.groupBox1.Enabled = false;
+            this.groupBox1.Location = new System.Drawing.Point(371, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(397, 592);
+            this.groupBox1.Size = new System.Drawing.Size(397, 561);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(224, 157);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 13);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "M^2";
             // 
             // lb_id
             // 
@@ -144,7 +157,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(26, 290);
+            this.label19.Location = new System.Drawing.Point(28, 290);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(63, 13);
             this.label19.TabIndex = 32;
@@ -153,7 +166,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(26, 263);
+            this.label18.Location = new System.Drawing.Point(60, 263);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(31, 13);
             this.label18.TabIndex = 31;
@@ -162,7 +175,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(26, 236);
+            this.label17.Location = new System.Drawing.Point(58, 236);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 13);
             this.label17.TabIndex = 29;
@@ -171,7 +184,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(26, 210);
+            this.label16.Location = new System.Drawing.Point(59, 210);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(32, 13);
             this.label16.TabIndex = 28;
@@ -180,7 +193,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(26, 184);
+            this.label15.Location = new System.Drawing.Point(19, 184);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 13);
             this.label15.TabIndex = 27;
@@ -189,7 +202,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(26, 158);
+            this.label14.Location = new System.Drawing.Point(57, 158);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(32, 13);
             this.label14.TabIndex = 26;
@@ -198,7 +211,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(26, 133);
+            this.label13.Location = new System.Drawing.Point(50, 133);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(38, 13);
             this.label13.TabIndex = 25;
@@ -207,22 +220,20 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(26, 107);
+            this.label12.Location = new System.Drawing.Point(41, 107);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(47, 13);
             this.label12.TabIndex = 24;
             this.label12.Text = "Numero:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(26, 81);
+            this.label11.Location = new System.Drawing.Point(58, 85);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(30, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Rua:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label10
             // 
@@ -242,32 +253,13 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "ID:";
             // 
-            // bt_nova
-            // 
-            this.bt_nova.Location = new System.Drawing.Point(283, 555);
-            this.bt_nova.Name = "bt_nova";
-            this.bt_nova.Size = new System.Drawing.Size(75, 23);
-            this.bt_nova.TabIndex = 20;
-            this.bt_nova.Text = "Nova";
-            this.bt_nova.UseVisualStyleBackColor = true;
-            // 
-            // bt_guardar
-            // 
-            this.bt_guardar.Location = new System.Drawing.Point(29, 555);
-            this.bt_guardar.Name = "bt_guardar";
-            this.bt_guardar.Size = new System.Drawing.Size(75, 23);
-            this.bt_guardar.TabIndex = 19;
-            this.bt_guardar.Text = "Guardar";
-            this.bt_guardar.UseVisualStyleBackColor = true;
-            this.bt_guardar.Click += new System.EventHandler(this.bt_guardar_Click);
-            // 
             // bt_limpezas
             // 
             this.bt_limpezas.Location = new System.Drawing.Point(13, 521);
             this.bt_limpezas.Name = "bt_limpezas";
             this.bt_limpezas.Size = new System.Drawing.Size(373, 28);
             this.bt_limpezas.TabIndex = 14;
-            this.bt_limpezas.Text = "Gerir Limpezas";
+            this.bt_limpezas.Text = "Gerir Limpezas (Total: 0)";
             this.bt_limpezas.UseVisualStyleBackColor = true;
             this.bt_limpezas.Click += new System.EventHandler(this.bt_limpezas_Click);
             // 
@@ -296,15 +288,16 @@
             this.bt_venda_ver.TabIndex = 19;
             this.bt_venda_ver.Text = "Ver ";
             this.bt_venda_ver.UseVisualStyleBackColor = true;
+            this.bt_venda_ver.Click += new System.EventHandler(this.bt_venda_ver_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(22, 85);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 24;
-            this.label5.Text = "Comissão";
+            this.label5.Text = "Comissão base";
             // 
             // tb_comissao_venda
             // 
@@ -318,9 +311,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(22, 31);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 13);
+            this.label6.Size = new System.Drawing.Size(115, 13);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Valor Base (mês)";
+            this.label6.Text = "Valor Base Negociavel";
             // 
             // tb_valor_venda
             // 
@@ -372,6 +365,7 @@
             this.bt_arrendamento_ver.TabIndex = 14;
             this.bt_arrendamento_ver.Text = "Ver / Criar";
             this.bt_arrendamento_ver.UseVisualStyleBackColor = true;
+            this.bt_arrendamento_ver.Click += new System.EventHandler(this.bt_arrendamento_ver_Click);
             // 
             // label4
             // 
@@ -456,6 +450,11 @@
             // cb_tipo
             // 
             this.cb_tipo.FormattingEnabled = true;
+            this.cb_tipo.Items.AddRange(new object[] {
+            "Moradia Germinada",
+            "Moradia",
+            "Apartamento",
+            "Barraco"});
             this.cb_tipo.Location = new System.Drawing.Point(97, 260);
             this.cb_tipo.Name = "cb_tipo";
             this.cb_tipo.Size = new System.Drawing.Size(294, 21);
@@ -464,6 +463,11 @@
             // nud_pisos
             // 
             this.nud_pisos.Location = new System.Drawing.Point(97, 234);
+            this.nud_pisos.Maximum = new decimal(new int[] {
+            -1486618625,
+            232830643,
+            0,
+            0});
             this.nud_pisos.Name = "nud_pisos";
             this.nud_pisos.Size = new System.Drawing.Size(120, 20);
             this.nud_pisos.TabIndex = 7;
@@ -471,6 +475,11 @@
             // nud_wc
             // 
             this.nud_wc.Location = new System.Drawing.Point(97, 208);
+            this.nud_wc.Maximum = new decimal(new int[] {
+            -1486618625,
+            232830643,
+            0,
+            0});
             this.nud_wc.Name = "nud_wc";
             this.nud_wc.Size = new System.Drawing.Size(120, 20);
             this.nud_wc.TabIndex = 6;
@@ -478,6 +487,11 @@
             // nud_assoalhadas
             // 
             this.nud_assoalhadas.Location = new System.Drawing.Point(97, 182);
+            this.nud_assoalhadas.Maximum = new decimal(new int[] {
+            1661992959,
+            1808227885,
+            5,
+            0});
             this.nud_assoalhadas.Name = "nud_assoalhadas";
             this.nud_assoalhadas.Size = new System.Drawing.Size(120, 20);
             this.nud_assoalhadas.TabIndex = 5;
@@ -485,6 +499,11 @@
             // nud_area
             // 
             this.nud_area.Location = new System.Drawing.Point(97, 156);
+            this.nud_area.Maximum = new decimal(new int[] {
+            -1981284353,
+            -1966660860,
+            0,
+            0});
             this.nud_area.Name = "nud_area";
             this.nud_area.Size = new System.Drawing.Size(120, 20);
             this.nud_area.TabIndex = 4;
@@ -495,7 +514,6 @@
             this.tb_andar.Name = "tb_andar";
             this.tb_andar.Size = new System.Drawing.Size(294, 20);
             this.tb_andar.TabIndex = 3;
-            this.tb_andar.TextChanged += new System.EventHandler(this.tb_andar_TextChanged);
             this.tb_andar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_andar_KeyPress);
             // 
             // tb_numero
@@ -504,7 +522,6 @@
             this.tb_numero.Name = "tb_numero";
             this.tb_numero.Size = new System.Drawing.Size(294, 20);
             this.tb_numero.TabIndex = 2;
-            this.tb_numero.TextChanged += new System.EventHandler(this.tb_numero_TextChanged);
             this.tb_numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_numero_KeyPress);
             // 
             // tb_rua
@@ -521,14 +538,36 @@
             this.tb_localidade.Size = new System.Drawing.Size(294, 20);
             this.tb_localidade.TabIndex = 0;
             // 
+            // bt_nova
+            // 
+            this.bt_nova.Location = new System.Drawing.Point(635, 658);
+            this.bt_nova.Name = "bt_nova";
+            this.bt_nova.Size = new System.Drawing.Size(75, 23);
+            this.bt_nova.TabIndex = 20;
+            this.bt_nova.Text = "Nova";
+            this.bt_nova.UseVisualStyleBackColor = true;
+            this.bt_nova.Click += new System.EventHandler(this.bt_nova_Click);
+            // 
+            // bt_guardar
+            // 
+            this.bt_guardar.Enabled = false;
+            this.bt_guardar.Location = new System.Drawing.Point(408, 658);
+            this.bt_guardar.Name = "bt_guardar";
+            this.bt_guardar.Size = new System.Drawing.Size(75, 23);
+            this.bt_guardar.TabIndex = 19;
+            this.bt_guardar.Text = "Guardar";
+            this.bt_guardar.UseVisualStyleBackColor = true;
+            this.bt_guardar.Click += new System.EventHandler(this.bt_guardar_Click);
+            // 
             // bt_apagar
             // 
-            this.bt_apagar.Location = new System.Drawing.Point(29, 661);
+            this.bt_apagar.Location = new System.Drawing.Point(3, 629);
             this.bt_apagar.Name = "bt_apagar";
-            this.bt_apagar.Size = new System.Drawing.Size(313, 29);
+            this.bt_apagar.Size = new System.Drawing.Size(362, 29);
             this.bt_apagar.TabIndex = 3;
             this.bt_apagar.Text = "Apagar";
             this.bt_apagar.UseVisualStyleBackColor = true;
+            this.bt_apagar.Click += new System.EventHandler(this.bt_apagar_Click);
             // 
             // imo_DADataSet
             // 
@@ -566,49 +605,67 @@
             this.casaSetDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.casaSetDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.casaSetDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdCasa,
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.dataGridViewTextBoxColumn3});
             this.casaSetDataGridView.DataSource = this.casaSetBindingSource;
-            this.casaSetDataGridView.Location = new System.Drawing.Point(12, 114);
+            this.casaSetDataGridView.Location = new System.Drawing.Point(3, 91);
             this.casaSetDataGridView.MultiSelect = false;
             this.casaSetDataGridView.Name = "casaSetDataGridView";
+            this.casaSetDataGridView.ReadOnly = true;
             this.casaSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.casaSetDataGridView.Size = new System.Drawing.Size(355, 541);
+            this.casaSetDataGridView.Size = new System.Drawing.Size(355, 532);
             this.casaSetDataGridView.TabIndex = 4;
+            this.casaSetDataGridView.Click += new System.EventHandler(this.casaSetDataGridView_Click);
+            // 
+            // IdCasa
+            // 
+            this.IdCasa.DataPropertyName = "IdCasa";
+            this.IdCasa.HeaderText = "IdCasa";
+            this.IdCasa.Name = "IdCasa";
+            this.IdCasa.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Localidade";
             this.dataGridViewTextBoxColumn2.HeaderText = "Localidade";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Rua";
             this.dataGridViewTextBoxColumn3.HeaderText = "Rua";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // pictureBox1
             // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Numero";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Numero";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(661, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 96);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // Casas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 718);
+            this.ClientSize = new System.Drawing.Size(780, 690);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.casaSetDataGridView);
             this.Controls.Add(this.bt_apagar);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.bt_guardar);
+            this.Controls.Add(this.bt_nova);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Casas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Casas";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Casas_FormClosed);
             this.Load += new System.EventHandler(this.Casas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -623,7 +680,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaSetDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -678,8 +737,10 @@
         private imo_DADataSetTableAdapters.CasaSetTableAdapter casaSetTableAdapter;
         private imo_DADataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.DataGridView casaSetDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCasa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label20;
     }
 }
