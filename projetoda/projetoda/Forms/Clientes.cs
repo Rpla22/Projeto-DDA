@@ -21,9 +21,6 @@ namespace ProjetoDA.Forms
         {
             imoDA = new ModelImoDaContainer();
             InitializeComponent();
-            cb_filtrar.Items.Add("ID");
-            cb_filtrar.Items.Add("Nome");
-            cb_filtrar.Items.Add("NIF");
             LerDados();
         }
 
@@ -60,7 +57,6 @@ namespace ProjetoDA.Forms
                         cliente.Contacto = tb_contacto.Text;                      
                         imoDA.SaveChanges();
                         LerDados();
-
                     }
                     return;
                 }
@@ -86,6 +82,7 @@ namespace ProjetoDA.Forms
             {
                 MessageBox.Show(ex.ToString());
             }
+            LerDados();
         }
 
 
@@ -259,8 +256,19 @@ namespace ProjetoDA.Forms
 
         private void bt_apagar_Click(object sender, EventArgs e)
         {
-            int index = clienteSetDataGridView.CurrentCell.RowIndex ;
+            int index = clienteSetDataGridView.CurrentCell.RowIndex;
+            DialogResult result = MessageBox.Show("Pretende apagar o cliente " + lista_cliente[index].Nome + "?","Apagar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Convert.ToString(result) == "Yes")
+            {   
+                imoDA.ClienteSet.Local.Remove(lista_cliente[index]);
+                imoDA.SaveChanges();
+                LerDados();
+            }
+            return;
+
+
             
+
         }
     }
 }

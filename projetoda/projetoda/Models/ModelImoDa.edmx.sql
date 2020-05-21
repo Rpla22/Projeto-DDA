@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/11/2020 21:59:10
--- Generated from EDMX file: C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\Models\ModelImoDa.edmx
+-- Date Created: 05/20/2020 23:09:17
+-- Generated from EDMX file: D:\Projetos\Projeto-DDA\projetoda\projetoda\Models\ModelImoDa.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,62 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ArrendamentoCasaArrendavel]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArrendamentoSet] DROP CONSTRAINT [FK_ArrendamentoCasaArrendavel];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CasaArrendavel_inherits_Casa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CasaSet_CasaArrendavel] DROP CONSTRAINT [FK_CasaArrendavel_inherits_Casa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CasaVendavel_inherits_Casa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CasaSet_CasaVendavel] DROP CONSTRAINT [FK_CasaVendavel_inherits_Casa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ClienteArrendamento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArrendamentoSet] DROP CONSTRAINT [FK_ClienteArrendamento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ClienteCasa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CasaSet] DROP CONSTRAINT [FK_ClienteCasa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ClienteVenda]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VendaSet] DROP CONSTRAINT [FK_ClienteVenda];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LimpezaCasa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[LimpezaSet] DROP CONSTRAINT [FK_LimpezaCasa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ServicoLimpeza]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ServicoSet] DROP CONSTRAINT [FK_ServicoLimpeza];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VendaCasaVendavel]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[VendaSet] DROP CONSTRAINT [FK_VendaCasaVendavel];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ArrendamentoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ArrendamentoSet];
+GO
+IF OBJECT_ID(N'[dbo].[CasaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CasaSet];
+GO
+IF OBJECT_ID(N'[dbo].[CasaSet_CasaArrendavel]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CasaSet_CasaArrendavel];
+GO
+IF OBJECT_ID(N'[dbo].[CasaSet_CasaVendavel]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CasaSet_CasaVendavel];
+GO
+IF OBJECT_ID(N'[dbo].[ClienteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ClienteSet];
+GO
+IF OBJECT_ID(N'[dbo].[LimpezaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LimpezaSet];
+GO
+IF OBJECT_ID(N'[dbo].[ServicoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ServicoSet];
+GO
+IF OBJECT_ID(N'[dbo].[VendaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[VendaSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -49,7 +100,7 @@ CREATE TABLE [dbo].[CasaSet] (
     [NumeroWc] nvarchar(max)  NOT NULL,
     [NumeroPisos] nvarchar(max)  NOT NULL,
     [Tipo] nvarchar(max)  NOT NULL,
-    [Cliente_IdCliente] int  NOT NULL
+    [ClienteIdCliente] int  NOT NULL
 );
 GO
 
@@ -88,16 +139,8 @@ CREATE TABLE [dbo].[VendaSet] (
     [DataVenda] nvarchar(max)  NOT NULL,
     [ValorNegociado] nvarchar(max)  NOT NULL,
     [ComissaoNegociada] nvarchar(max)  NOT NULL,
-    [Comprador_IdCliente] int  NOT NULL,
-    [CasaVendavel_IdCasa] int  NOT NULL
-);
-GO
-
--- Creating table 'CasaSet_CasaVendavel'
-CREATE TABLE [dbo].[CasaSet_CasaVendavel] (
-    [ValorBaseVenda] nvarchar(max)  NOT NULL,
-    [ValorComissao] nvarchar(max)  NOT NULL,
-    [IdCasa] int  NOT NULL
+    [CasaVendavelIdCasa] int  NOT NULL,
+    [Comprador_IdCliente] int  NOT NULL
 );
 GO
 
@@ -105,6 +148,14 @@ GO
 CREATE TABLE [dbo].[CasaSet_CasaArrendavel] (
     [ValorBaseMes] nvarchar(max)  NOT NULL,
     [Comissao] nvarchar(max)  NOT NULL,
+    [IdCasa] int  NOT NULL
+);
+GO
+
+-- Creating table 'CasaSet_CasaVendavel'
+CREATE TABLE [dbo].[CasaSet_CasaVendavel] (
+    [ValorBaseVenda] nvarchar(max)  NOT NULL,
+    [ValorComissao] nvarchar(max)  NOT NULL,
     [IdCasa] int  NOT NULL
 );
 GO
@@ -149,15 +200,15 @@ ADD CONSTRAINT [PK_VendaSet]
     PRIMARY KEY CLUSTERED ([IdVenda] ASC);
 GO
 
--- Creating primary key on [IdCasa] in table 'CasaSet_CasaVendavel'
-ALTER TABLE [dbo].[CasaSet_CasaVendavel]
-ADD CONSTRAINT [PK_CasaSet_CasaVendavel]
-    PRIMARY KEY CLUSTERED ([IdCasa] ASC);
-GO
-
 -- Creating primary key on [IdCasa] in table 'CasaSet_CasaArrendavel'
 ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
 ADD CONSTRAINT [PK_CasaSet_CasaArrendavel]
+    PRIMARY KEY CLUSTERED ([IdCasa] ASC);
+GO
+
+-- Creating primary key on [IdCasa] in table 'CasaSet_CasaVendavel'
+ALTER TABLE [dbo].[CasaSet_CasaVendavel]
+ADD CONSTRAINT [PK_CasaSet_CasaVendavel]
     PRIMARY KEY CLUSTERED ([IdCasa] ASC);
 GO
 
@@ -178,21 +229,6 @@ GO
 CREATE INDEX [IX_FK_ClienteVenda]
 ON [dbo].[VendaSet]
     ([Comprador_IdCliente]);
-GO
-
--- Creating foreign key on [Cliente_IdCliente] in table 'CasaSet'
-ALTER TABLE [dbo].[CasaSet]
-ADD CONSTRAINT [FK_ClienteCasa]
-    FOREIGN KEY ([Cliente_IdCliente])
-    REFERENCES [dbo].[ClienteSet]
-        ([IdCliente])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ClienteCasa'
-CREATE INDEX [IX_FK_ClienteCasa]
-ON [dbo].[CasaSet]
-    ([Cliente_IdCliente]);
 GO
 
 -- Creating foreign key on [Arrendatario_IdCliente] in table 'ArrendamentoSet'
@@ -240,21 +276,6 @@ ON [dbo].[LimpezaSet]
     ([Casa_IdCasa]);
 GO
 
--- Creating foreign key on [CasaVendavel_IdCasa] in table 'VendaSet'
-ALTER TABLE [dbo].[VendaSet]
-ADD CONSTRAINT [FK_VendaCasaVendavel]
-    FOREIGN KEY ([CasaVendavel_IdCasa])
-    REFERENCES [dbo].[CasaSet_CasaVendavel]
-        ([IdCasa])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_VendaCasaVendavel'
-CREATE INDEX [IX_FK_VendaCasaVendavel]
-ON [dbo].[VendaSet]
-    ([CasaVendavel_IdCasa]);
-GO
-
 -- Creating foreign key on [CasaArrendavel_IdCasa] in table 'ArrendamentoSet'
 ALTER TABLE [dbo].[ArrendamentoSet]
 ADD CONSTRAINT [FK_ArrendamentoCasaArrendavel]
@@ -270,18 +291,48 @@ ON [dbo].[ArrendamentoSet]
     ([CasaArrendavel_IdCasa]);
 GO
 
--- Creating foreign key on [IdCasa] in table 'CasaSet_CasaVendavel'
-ALTER TABLE [dbo].[CasaSet_CasaVendavel]
-ADD CONSTRAINT [FK_CasaVendavel_inherits_Casa]
+-- Creating foreign key on [ClienteIdCliente] in table 'CasaSet'
+ALTER TABLE [dbo].[CasaSet]
+ADD CONSTRAINT [FK_ClienteCasa]
+    FOREIGN KEY ([ClienteIdCliente])
+    REFERENCES [dbo].[ClienteSet]
+        ([IdCliente])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ClienteCasa'
+CREATE INDEX [IX_FK_ClienteCasa]
+ON [dbo].[CasaSet]
+    ([ClienteIdCliente]);
+GO
+
+-- Creating foreign key on [CasaVendavelIdCasa] in table 'VendaSet'
+ALTER TABLE [dbo].[VendaSet]
+ADD CONSTRAINT [FK_VendaCasaVendavel]
+    FOREIGN KEY ([CasaVendavelIdCasa])
+    REFERENCES [dbo].[CasaSet_CasaVendavel]
+        ([IdCasa])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_VendaCasaVendavel'
+CREATE INDEX [IX_FK_VendaCasaVendavel]
+ON [dbo].[VendaSet]
+    ([CasaVendavelIdCasa]);
+GO
+
+-- Creating foreign key on [IdCasa] in table 'CasaSet_CasaArrendavel'
+ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
+ADD CONSTRAINT [FK_CasaArrendavel_inherits_Casa]
     FOREIGN KEY ([IdCasa])
     REFERENCES [dbo].[CasaSet]
         ([IdCasa])
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [IdCasa] in table 'CasaSet_CasaArrendavel'
-ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
-ADD CONSTRAINT [FK_CasaArrendavel_inherits_Casa]
+-- Creating foreign key on [IdCasa] in table 'CasaSet_CasaVendavel'
+ALTER TABLE [dbo].[CasaSet_CasaVendavel]
+ADD CONSTRAINT [FK_CasaVendavel_inherits_Casa]
     FOREIGN KEY ([IdCasa])
     REFERENCES [dbo].[CasaSet]
         ([IdCasa])

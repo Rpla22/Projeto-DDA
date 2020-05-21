@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clientes));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
@@ -51,17 +52,19 @@
             this.clienteSetTableAdapter = new ProjetoDA.imo_DADataSetTableAdapters.ClienteSetTableAdapter();
             this.tableAdapterManager = new ProjetoDA.imo_DADataSetTableAdapters.TableAdapterManager();
             this.clienteSetDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tb_filtrar = new System.Windows.Forms.TextBox();
             this.cb_filtrar = new System.Windows.Forms.ComboBox();
             this.bt_apagar = new System.Windows.Forms.Button();
             this.bt_filtrar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,7 +85,7 @@
             this.groupBox1.Controls.Add(this.tb_morada);
             this.groupBox1.Controls.Add(this.tb_nif);
             this.groupBox1.Controls.Add(this.tb_nome);
-            this.groupBox1.Location = new System.Drawing.Point(393, 65);
+            this.groupBox1.Location = new System.Drawing.Point(393, 82);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(306, 528);
             this.groupBox1.TabIndex = 2;
@@ -264,35 +267,38 @@
             this.clienteSetDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.clienteSetDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clienteSetDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.dataGridViewTextBoxColumn3,
+            this.Contacto});
             this.clienteSetDataGridView.DataSource = this.clienteSetBindingSource;
-            this.clienteSetDataGridView.Location = new System.Drawing.Point(12, 65);
+            this.clienteSetDataGridView.Location = new System.Drawing.Point(12, 82);
             this.clienteSetDataGridView.Name = "clienteSetDataGridView";
+            this.clienteSetDataGridView.ReadOnly = true;
             this.clienteSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clienteSetDataGridView.Size = new System.Drawing.Size(375, 499);
             this.clienteSetDataGridView.TabIndex = 3;
             this.clienteSetDataGridView.Click += new System.EventHandler(this.clienteSetDataGridView_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdCliente";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IdCliente";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "Nome";
             this.dataGridViewTextBoxColumn2.HeaderText = "Nome";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "NIF";
             this.dataGridViewTextBoxColumn3.HeaderText = "NIF";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // Contacto
+            // 
+            this.Contacto.DataPropertyName = "Contacto";
+            this.Contacto.HeaderText = "Contacto";
+            this.Contacto.Name = "Contacto";
+            this.Contacto.ReadOnly = true;
             // 
             // tb_filtrar
             // 
@@ -304,6 +310,10 @@
             // cb_filtrar
             // 
             this.cb_filtrar.FormattingEnabled = true;
+            this.cb_filtrar.Items.AddRange(new object[] {
+            "ID",
+            "Nome",
+            "NIF"});
             this.cb_filtrar.Location = new System.Drawing.Point(12, 38);
             this.cb_filtrar.Name = "cb_filtrar";
             this.cb_filtrar.Size = new System.Drawing.Size(121, 21);
@@ -311,7 +321,7 @@
             // 
             // bt_apagar
             // 
-            this.bt_apagar.Location = new System.Drawing.Point(12, 570);
+            this.bt_apagar.Location = new System.Drawing.Point(12, 587);
             this.bt_apagar.Name = "bt_apagar";
             this.bt_apagar.Size = new System.Drawing.Size(375, 23);
             this.bt_apagar.TabIndex = 6;
@@ -329,19 +339,31 @@
             this.bt_filtrar.UseVisualStyleBackColor = true;
             this.bt_filtrar.Click += new System.EventHandler(this.bt_filtrar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(629, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 608);
+            this.ClientSize = new System.Drawing.Size(707, 617);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.bt_filtrar);
             this.Controls.Add(this.bt_apagar);
             this.Controls.Add(this.cb_filtrar);
             this.Controls.Add(this.tb_filtrar);
             this.Controls.Add(this.clienteSetDataGridView);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
@@ -350,6 +372,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imo_DADataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteSetDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,13 +400,14 @@
         private System.Windows.Forms.BindingSource clienteSetBindingSource;
         private imo_DADataSetTableAdapters.ClienteSetTableAdapter clienteSetTableAdapter;
         private imo_DADataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.DataGridView clienteSetDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TextBox tb_filtrar;
         private System.Windows.Forms.ComboBox cb_filtrar;
         private System.Windows.Forms.Button bt_apagar;
         private System.Windows.Forms.Button bt_filtrar;
+        private System.Windows.Forms.DataGridView clienteSetDataGridView;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contacto;
     }
 }

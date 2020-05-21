@@ -111,6 +111,7 @@
             this.bt_inserir.TabIndex = 6;
             this.bt_inserir.Text = "Inserir";
             this.bt_inserir.UseVisualStyleBackColor = true;
+            this.bt_inserir.Click += new System.EventHandler(this.bt_inserir_Click);
             // 
             // nud_quantidade
             // 
@@ -190,7 +191,6 @@
             this.Name = "Limpezas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Limpezas";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Limpezas_FormClosed);
             this.Load += new System.EventHandler(this.Limpezas_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

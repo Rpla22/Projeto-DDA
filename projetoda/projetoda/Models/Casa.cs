@@ -30,9 +30,10 @@ namespace ProjetoDA.Models
         public string NumeroWc { get; set; }
         public string NumeroPisos { get; set; }
         public string Tipo { get; set; }
+        public int ClienteIdCliente { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Limpeza> Limpeza { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace ProjetoDA.Models
 {
     public partial class Casa
     {
-        public Casa(string localidade, string rua, string numero, string andar, string area, string numeroAssoalhadas, string numeroWc, string numeroPisos, string tipo, Cliente cliente)
+        public Casa(string localidade, string rua, string numero, string andar, string area, string numeroAssoalhadas, string numeroWc, string numeroPisos, string tipo, int cliente)
         {
             Localidade = localidade;
             Rua = rua;
@@ -19,8 +19,10 @@ namespace ProjetoDA.Models
             NumeroWc = numeroWc;
             NumeroPisos = numeroPisos;
             Tipo = tipo;
-            Cliente = cliente;
+            ClienteIdCliente = cliente;
+            //Cliente = cliente;
         }
+
 
         public override string ToString()
         {

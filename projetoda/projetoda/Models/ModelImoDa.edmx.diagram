@@ -10,18 +10,18 @@
         <EntityTypeShape EntityType="ModelImoDa.Limpeza" Width="1.5" PointX="6.25" PointY="7.875" />
         <EntityTypeShape EntityType="ModelImoDa.Servico" Width="1.5" PointX="4.125" PointY="7.625" />
         <EntityTypeShape EntityType="ModelImoDa.Arrendamento" Width="1.5" PointX="4.375" PointY="4.125" />
-        <EntityTypeShape EntityType="ModelImoDa.Venda" Width="1.5" PointX="3.625" PointY="10.625" />
+        <EntityTypeShape EntityType="ModelImoDa.Venda" PointX="3.5" PointY="11" Width="1.5" />
         <EntityTypeShape EntityType="ModelImoDa.CasaVendavel" Width="1.5" PointX="7.375" PointY="11" />
         <EntityTypeShape EntityType="ModelImoDa.CasaArrendavel" Width="1.5" PointX="7.875" PointY="4.5" />
         <AssociationConnector Association="ModelImoDa.ClienteVenda" />
-        <AssociationConnector Association="ModelImoDa.ClienteCasa" />
         <AssociationConnector Association="ModelImoDa.ClienteArrendamento" />
         <AssociationConnector Association="ModelImoDa.ServicoLimpeza" />
         <AssociationConnector Association="ModelImoDa.LimpezaCasa" />
-        <AssociationConnector Association="ModelImoDa.VendaCasaVendavel" />
         <AssociationConnector Association="ModelImoDa.ArrendamentoCasaArrendavel" />
         <InheritanceConnector EntityType="ModelImoDa.CasaArrendavel" />
         <InheritanceConnector EntityType="ModelImoDa.CasaVendavel" />
+        <AssociationConnector Association="ModelImoDa.ClienteCasa" />
+        <AssociationConnector Association="ModelImoDa.VendaCasaVendavel" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -32,12 +32,9 @@ namespace ProjetoDA.Forms
 
         }
 
-        private void Limpezas_FormClosed(object sender, FormClosedEventArgs e)
+        private void bt_inserir_Click(object sender, EventArgs e)
         {
-            Casas casas = new Casas();
-            casas.Show();
-            this.Hide();
-            
+
         }
     }
 }
