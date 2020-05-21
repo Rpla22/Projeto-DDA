@@ -29,11 +29,13 @@ namespace ProjetoDA.Forms
             imoDA.Dispose();
             imoDA = new ModelImoDaContainer();
             (from cliente in imoDA.ClienteSet
-             orderby cliente.IdCliente
+             orderby cliente.Nome
              select cliente).ToList();
             clienteSetDataGridView.DataSource = null;
             clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
-            lista_cliente = imoDA.ClienteSet.ToList();            
+            lista_cliente = (from cliente in imoDA.ClienteSet
+                             orderby cliente.Nome
+                             select cliente).ToList();            
         }
        
 
@@ -184,17 +186,23 @@ namespace ProjetoDA.Forms
         {
             imoDA.Dispose();
             imoDA = new ModelImoDaContainer();
-            if (tb_filtrar.Text != "" && cb_filtrar.Text !="")
+            if (tb_filtrar.Text == "")
+            {
+                LerDados();
+                return;
+            }
+            
+            if (cb_filtrar.Text !="")
             {
                 switch (cb_filtrar.Text)
                 {
-                    case "ID":
+                    case "Contacto":
                         foreach (Cliente local_cliente in lista_cliente)
                         {
-                            if (tb_filtrar.Text == Convert.ToString(local_cliente.IdCliente))
+                            if (tb_filtrar.Text == local_cliente.Contacto)
                             {
                                 (from cliente in imoDA.ClienteSet
-                                 where cliente.IdCliente.ToString().Contains(tb_filtrar.Text)
+                                 where cliente.Contacto.Contains(tb_filtrar.Text)
                                  select cliente).ToList();
 
                                 clienteSetDataGridView.DataSource = null;
@@ -269,6 +277,32 @@ namespace ProjetoDA.Forms
 
             
 
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
+            int index = listBox1.SelectedIndex;
+            if (index == -1)
+            {
+                return;
+            }
+            
+           List <Casa> lista_casa;
+            lista_casa = lista_cliente[index1].Casas.ToList();
+
+            Casa casa = (Casa)lista_casa.ElementAt(index);
+
+            Casas formcasa = new Casas(casa.IdCasa);
+            formcasa.FormClosed += Formcasa_FormClosed;
+            this.Hide();
+            formcasa.Show();
+
+        }
+
+        private void Formcasa_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

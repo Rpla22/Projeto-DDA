@@ -18,8 +18,9 @@ namespace ProjetoDA.Forms
         private ModelImoDaContainer imoDA;
         private List<Cliente> lista_cliente;
         private List<Casa> lista_casa;
+        private int casa_id = 0;
 
-        public Casas()
+        public Casas(int id_casa)
         {
             
             InitializeComponent();
@@ -27,7 +28,8 @@ namespace ProjetoDA.Forms
             lista_cliente = imoDA.ClienteSet.ToList();
             LerDados_cliente();
             LerDados();
-        }
+            casa_id = id_casa;
+ }
         private void LerDados_cliente()
         {
             foreach (Cliente cliente in lista_cliente)
@@ -114,6 +116,7 @@ namespace ProjetoDA.Forms
                             CasaVendavel casavendavel = (CasaVendavel)casas;
                             casavendavel.ValorBaseVenda = tb_valor_venda.Text;
                             casavendavel.ValorComissao = tb_comissao_venda.Text;
+                            
                         }
                         else if (casas is CasaArrendavel) 
                         {
@@ -123,6 +126,7 @@ namespace ProjetoDA.Forms
                         }
                             imoDA.SaveChanges();
                             LerDados();
+                        casaSetDataGridView_Click(sender, e);
                         return;
                     }
                 }
@@ -141,6 +145,7 @@ namespace ProjetoDA.Forms
                    MessageBox.Show(Convert.ToString(ex));
                 }
                 LerDados();
+                casaSetDataGridView_Click(sender, e);
                 return;
             }
            
@@ -153,6 +158,7 @@ namespace ProjetoDA.Forms
                     imoDA.CasaSet.Add(novaCasa);
                     imoDA.SaveChanges();
                     LerDados();
+                    casaSetDataGridView_Click(sender, e);
                     return;
                 }catch(Exception ex)
                 {
@@ -167,6 +173,7 @@ namespace ProjetoDA.Forms
                     imoDA.CasaSet.Add(novaCasa);
                     imoDA.SaveChanges();
                     LerDados();
+                    casaSetDataGridView_Click(sender, e);
                     return;
                 }
                 catch (Exception ex)
@@ -201,6 +208,8 @@ namespace ProjetoDA.Forms
         {
             groupBox1.Enabled = true;
             bt_guardar.Enabled = true;
+            cb_vendavel.Enabled = true;
+            cb_arrendavel.Enabled = true;
             if (lista_casa.Count==0)
             {
                 lb_id.Text = "1";
@@ -282,6 +291,10 @@ namespace ProjetoDA.Forms
         {
             groupBox1.Enabled = true;
             bt_guardar.Enabled = true;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
+            cb_arrendavel.Enabled = false;
+            cb_vendavel.Enabled = false;
 
             int index = casaSetDataGridView.CurrentCell.RowIndex;
 
@@ -295,6 +308,7 @@ namespace ProjetoDA.Forms
 
             if (casa is CasaVendavel)
             {
+                groupBox3.Enabled = false;
                 CasaVendavel casaVendavel = (CasaVendavel)casa;
                 lb_id.Text = casaVendavel.IdCasa.ToString();
                 cb_vendavel.Checked = true;
@@ -309,6 +323,7 @@ namespace ProjetoDA.Forms
             }
             else if (casa is CasaArrendavel)
             {
+                groupBox2.Enabled = true;
                 CasaArrendavel casaArrendavel = (CasaArrendavel)casa;
                 lb_id.Text = casaArrendavel.IdCasa.ToString();
                 cb_arrendavel.Checked = true;
@@ -347,15 +362,39 @@ namespace ProjetoDA.Forms
             nud_pisos.Value = Convert.ToInt32(casa.NumeroAssoalhadas);
             nud_wc.Value = Convert.ToInt32(casa.NumeroWc);
             cb_tipo.Text = casa.Tipo;
+            int count = 0;
             foreach(Cliente cliente in lista_cliente)
             {
+                
                 if (casa.ClienteIdCliente == cliente.IdCliente)
                 {
-                    cb_proprietario.Text = cliente.Nome;
+                    cb_proprietario.SelectedIndex=count;
                     return;
                 }
+                count++;
             }
             
+        }
+
+        private void Casas_Load(object sender, EventArgs e)
+        {
+            if (casa_id == 0)
+            {
+                return;
+            }
+            else
+            {
+                int index = 0;
+                foreach (Casa casa in lista_casa)
+                {
+                    if (casa.IdCasa == casa_id)
+                    {
+                        casaSetDataGridView.Rows[index].Selected = true;
+                        casaSetDataGridView_Click(sender, e);
+                    }
+                    index++;
+                }
+            }
         }
     }
 }

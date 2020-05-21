@@ -35,7 +35,7 @@ namespace ProjetoDA
 
         private void bt_casas_Click(object sender, EventArgs e)
         {
-            Casas casas = new Casas();
+            Casas casas = new Casas(0);
             casas.FormClosed += Casas_FormClosed;
 
             this.Hide();
@@ -46,10 +46,6 @@ namespace ProjetoDA
         {
             this.Show();
         }
-
-        private void ImoDA_Load(object sender, EventArgs e)
-        {
-
-        }
+ 
     }
 }

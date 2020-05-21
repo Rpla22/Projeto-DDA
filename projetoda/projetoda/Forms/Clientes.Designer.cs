@@ -104,7 +104,7 @@
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(6, 433);
+            this.listBox3.Location = new System.Drawing.Point(6, 429);
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(294, 82);
             this.listBox3.TabIndex = 15;
@@ -142,6 +142,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(294, 82);
             this.listBox1.TabIndex = 10;
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // bt_novo
             // 
@@ -311,9 +312,9 @@
             // 
             this.cb_filtrar.FormattingEnabled = true;
             this.cb_filtrar.Items.AddRange(new object[] {
-            "ID",
             "Nome",
-            "NIF"});
+            "NIF",
+            "Contacto"});
             this.cb_filtrar.Location = new System.Drawing.Point(12, 38);
             this.cb_filtrar.Name = "cb_filtrar";
             this.cb_filtrar.Size = new System.Drawing.Size(121, 21);

@@ -20,7 +20,6 @@ namespace ProjetoDA.Models
             NumeroPisos = numeroPisos;
             Tipo = tipo;
             ClienteIdCliente = cliente;
-            //Cliente = cliente;
         }
 
 

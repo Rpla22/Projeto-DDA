@@ -98,7 +98,6 @@
             this.Name = "ImoDA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImoDA";
-            this.Load += new System.EventHandler(this.ImoDA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
