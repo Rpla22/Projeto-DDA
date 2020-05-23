@@ -17,7 +17,7 @@ namespace ProjetoDA.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Casa()
         {
-            this.Limpeza = new HashSet<Limpeza>();
+            this.Limpezas = new HashSet<Limpeza>();
         }
     
         public int IdCasa { get; set; }
@@ -30,9 +30,10 @@ namespace ProjetoDA.Models
         public string NumeroWc { get; set; }
         public string NumeroPisos { get; set; }
         public string Tipo { get; set; }
+        public int ClienteIdCliente { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Limpeza> Limpeza { get; set; }
+        public virtual ICollection<Limpeza> Limpezas { get; set; }
     }
 }

@@ -14,10 +14,16 @@ namespace ProjetoDA.Models
     
     public partial class Servico
     {
+        public Servico()
+        {
+        }
+
         public int IdServico { get; set; }
         public string Descricao { get; set; }
-        public string Valor { get; set; }
+        public int Valor { get; set; }
         public string Unidades { get; set; }
+        public int LimpezaIdLimpeza { get; set; }
+        public int Valor_total { get; set; }
     
         public virtual Limpeza Limpeza { get; set; }
     }

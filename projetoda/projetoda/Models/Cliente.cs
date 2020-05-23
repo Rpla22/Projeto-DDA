@@ -14,38 +14,25 @@ namespace ProjetoDA.Models
     
     public partial class Cliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cliente()
+        {
+            this.Aquisicoes = new HashSet<Venda>();
+            this.Arrendamentos = new HashSet<Arrendamento>();
+            this.Casas = new HashSet<Casa>();
+        }
+    
         public int IdCliente { get; set; }
         public string Nome { get; set; }
         public string NIF { get; set; }
         public string Morada { get; set; }
         public string Contacto { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Cliente()
-        {
-            this.Aquisicoes = new HashSet<Venda>();
-            this.Casas = new HashSet<Casa>();
-            this.Arrendamentos = new HashSet<Arrendamento>();
-        }
-
-        public Cliente(string nome, string nif, string morada, string contacto)
-        {
-            this.Nome = nome;
-            this.NIF = nif;
-            this.Morada = morada;
-            this.Contacto = contacto;
-        }
-
-        public override string ToString()
-        {
-            return Nome;
-        }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Venda> Aquisicoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Casa> Casas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Arrendamento> Arrendamentos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Casa> Casas { get; set; }
     }
 }

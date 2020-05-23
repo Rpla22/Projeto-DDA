@@ -18,6 +18,7 @@ namespace ProjetoDA.Models
         public string DataVenda { get; set; }
         public string ValorNegociado { get; set; }
         public string ComissaoNegociada { get; set; }
+        public int CasaVendavelIdCasa { get; set; }
     
         public virtual Cliente Comprador { get; set; }
         public virtual CasaVendavel CasaVendavel { get; set; }

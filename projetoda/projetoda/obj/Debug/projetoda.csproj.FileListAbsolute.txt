@@ -14,8 +14,27 @@ C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\De
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\Debug\EntityFramework.xml
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.csproj.CopyComplete
-<<<<<<< HEAD
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Casas.resources
 C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Limpezas.resources
-=======
->>>>>>> develop
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Arrendamentos.resources
+C:\Users\white\OneDrive\Documentos\GitHub\Projeto-DDA\ProjetoDA\ProjetoDA\obj\Debug\ProjetoDA.Forms.Venda.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\ProjetoDA.exe.config
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\ProjetoDA.exe
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\ProjetoDA.pdb
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\EntityFramework.dll
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\EntityFramework.xml
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.csprojAssemblyReference.cache
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.Forms.Arrendamentos.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.Forms.Casas.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.Forms.Clientes.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.Forms.Limpezas.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.ImoDA.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.Properties.Resources.resources
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.csproj.GenerateResource.cache
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.csproj.CoreCompileInputs.cache
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.csproj.CopyComplete
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.exe
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.pdb
+D:\Projetos\Projeto-DDA\projetoda\ProjetoDA\obj\Debug\ProjetoDA.Forms.Vendas.resources
