@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -228,4 +229,230 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+=======
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BCA15C82-E6E3-4DD3-AD08-CA67DB7F9061}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProjetoDA</RootNamespace>
+    <AssemblyName>ProjetoDA</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\Arrendamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Arrendamentos.Designer.cs">
+      <DependentUpon>Arrendamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Casas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Casas.Designer.cs">
+      <DependentUpon>Casas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Limpezas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Limpezas.Designer.cs">
+      <DependentUpon>Limpezas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Venda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Venda.Designer.cs">
+      <DependentUpon>Venda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImoDA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImoDA.Designer.cs">
+      <DependentUpon>ImoDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="imo_DADataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>imo_DADataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arrendamento.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arrendamento.part.cs" />
+    <Compile Include="Models\Casa.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Casa.part.cs" />
+    <Compile Include="Models\CasaArrendavel.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CasaArrendavel.part.cs" />
+    <Compile Include="Models\CasaVendavel.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CasaVendavel.part.cs" />
+    <Compile Include="Models\Cliente.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cliente.part.cs" />
+    <Compile Include="Models\Limpeza.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelImoDa.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelImoDa.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelImoDa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelImoDa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelImoDa.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Servico.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Venda.cs">
+      <DependentUpon>ModelImoDa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Venda.part.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Arrendamentos.resx">
+      <DependentUpon>Arrendamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Casas.resx">
+      <DependentUpon>Casas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Limpezas.resx">
+      <DependentUpon>Limpezas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Venda.resx">
+      <DependentUpon>Venda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImoDA.resx">
+      <DependentUpon>ImoDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="imo_DADataSet.xsc">
+      <DependentUpon>imo_DADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="imo_DADataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>imo_DADataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="imo_DADataSet.xss">
+      <DependentUpon>imo_DADataSet.xsd</DependentUpon>
+    </None>
+    <EntityDeploy Include="Models\ModelImoDa.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelImoDa.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelImoDa.edmx.diagram">
+      <DependentUpon>ModelImoDa.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ModelImoDa.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelImoDa.Context.cs</LastGenOutput>
+      <DependentUpon>ModelImoDa.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ModelImoDa.edmx.sql" />
+    <Content Include="Models\ModelImoDa.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelImoDa.cs</LastGenOutput>
+      <DependentUpon>ModelImoDa.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+>>>>>>> develop
 </Project>
