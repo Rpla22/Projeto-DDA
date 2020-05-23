@@ -14,31 +14,30 @@ namespace ProjetoDA.Forms
 {
     public partial class Clientes : Form
     {
-        private Model1Container imoDA;
+        private ModelImoDaContainer imoDA;
         private List<Cliente> lista_cliente;
 
         public Clientes()
         {
-            
+            imoDA = new ModelImoDaContainer();
             InitializeComponent();
-            imoDA = new Model1Container();
-            lista_cliente = imoDA.ClienteSet.ToList();
             LerDados();
         }
 
         private void LerDados()
         {
+            imoDA.Dispose();
+            imoDA = new ModelImoDaContainer();
             (from cliente in imoDA.ClienteSet
-             orderby cliente.IdCliente
-             select cliente).Load();
+             orderby cliente.Nome
+             select cliente).ToList();
+            clienteSetDataGridView.DataSource = null;
             clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+            lista_cliente = (from cliente in imoDA.ClienteSet
+                             orderby cliente.Nome
+                             select cliente).ToList();            
         }
        
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -55,7 +54,11 @@ namespace ProjetoDA.Forms
                     DialogResult result = MessageBox.Show("Pretende alterar as informações do cliente com o NIF: " + cliente.NIF + "?", "O Cliente ja se encontra registado", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (Convert.ToString(result) == "Yes")
                     {
-
+                        cliente.Nome = tb_nome.Text;
+                        cliente.Morada = tb_morada.Text;
+                        cliente.Contacto = tb_contacto.Text;                      
+                        imoDA.SaveChanges();
+                        LerDados();
                     }
                     return;
                 }
@@ -81,24 +84,7 @@ namespace ProjetoDA.Forms
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void clienteSetDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = clienteSetDataGridView.CurrentCell.RowIndex;
-            
-            if (index == -1)
-            {
-                return;
-            }                       
-            tb_nome.Text = lista_cliente[index].Nome;
-            tb_nif.Text = lista_cliente[index].NIF;
-            tb_morada.Text = lista_cliente[index].Morada;
-            tb_contacto.Text = lista_cliente[index].Contacto;
-
-            listBox1.DataSource = lista_cliente[index].Casas.ToList();
-            listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
-            listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
+            LerDados();
         }
 
 
@@ -155,22 +141,226 @@ namespace ProjetoDA.Forms
             }
             return functionReturnValue;
         }
-<<<<<<< HEAD
 
-        private void Clientes_FormClosed(object sender, FormClosedEventArgs e)
+        private void clienteSetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
-            ImoDA imoda = new ImoDA();
+            this.Validate();
+            this.clienteSetBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.imo_DADataSet);
+
+        }
+
+        private void clienteSetDataGridView_Click(object sender, EventArgs e)
+        {
+            int index = clienteSetDataGridView.CurrentCell.RowIndex;
+
+            if (index == -1)
+            {
+                return;
+            }
+            tb_nome.Text = lista_cliente[index].Nome;
+            tb_nif.Text = lista_cliente[index].NIF;
+            tb_morada.Text = lista_cliente[index].Morada;
+            tb_contacto.Text = lista_cliente[index].Contacto;
+
+            try
+            {
+                listBox1.DataSource = lista_cliente[index].Casas.ToList();
+                listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
+                listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
+            }catch(Exception)
+            {
+            }
+            
+        }
+
+        private void bt_novo_Click(object sender, EventArgs e)
+        {
+            tb_nome.Text = "";
+            tb_nif.Text = "";
+            tb_morada.Text = "";
+            tb_contacto.Text = "";
+        }
+
+        private void bt_filtrar_Click(object sender, EventArgs e)
+        {
+            imoDA.Dispose();
+            imoDA = new ModelImoDaContainer();
+            if (tb_filtrar.Text == "")
+            {
+                LerDados();
+                return;
+            }
+            
+            if (cb_filtrar.Text !="")
+            {
+                switch (cb_filtrar.Text)
+                {
+                    case "Contacto":
+                        foreach (Cliente local_cliente in lista_cliente)
+                        {
+                            if (tb_filtrar.Text == local_cliente.Contacto)
+                            {
+                                (from cliente in imoDA.ClienteSet
+                                 where cliente.Contacto.Contains(tb_filtrar.Text)
+                                 select cliente).ToList();
+
+                                clienteSetDataGridView.DataSource = null;
+                                clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+                                return;
+                            }
+                        }
+
+                        MessageBox.Show("Não foram encontrados dados correspondentes à pesquisa");
+                        break;
+
+                    case "Nome":
+                        foreach (Cliente local_cliente in lista_cliente)
+                        {
+                            if (local_cliente.Nome.ToString().ToUpper().Contains(tb_filtrar.Text.ToUpper()))
+                            {
+                                (from cliente in imoDA.ClienteSet
+                                 where cliente.Nome.ToString().Contains(tb_filtrar.Text)
+                                 select cliente).ToList();
+                                clienteSetDataGridView.DataSource = null;
+                                clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+                                return;
+                            }
+                        }
+
+                        MessageBox.Show("Não foram encontrados dados correspondentes à pesquisa");
+                        break;
+
+                    case "NIF":
+
+                        foreach (Cliente local_cliente in lista_cliente)
+                        {
+                            if (tb_filtrar.Text == local_cliente.NIF)
+                            {
+                                (from cliente in imoDA.ClienteSet
+                                 where cliente.NIF.ToString().Contains(tb_filtrar.Text)
+                                 select cliente).ToList();
+
+                                clienteSetDataGridView.DataSource = null;
+                                clienteSetDataGridView.DataSource = imoDA.ClienteSet.Local.ToBindingList();
+                                return;
+                            }
+                        }
+
+                        MessageBox.Show("Não foram encontrados dados correspondentes à pesquisa");
+
+                        break;
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Campos Vazios");
+                LerDados();
+
+            }
+        }
+
+        private void bt_apagar_Click(object sender, EventArgs e)
+        {
+            int index = clienteSetDataGridView.CurrentCell.RowIndex;
+          if (lista_cliente[index].Casas.ToList()!=null ||lista_cliente[index].Arrendamentos.ToList()!=null || lista_cliente[index].Aquisicoes.ToList() != null)
+            {
+                MessageBox.Show("Não é possivel apagar cliente. O cliente tem algo acosiado ","Apagar cliente",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            } 
+            DialogResult result = MessageBox.Show("Pretende apagar o cliente " + lista_cliente[index].Nome + "?","Apagar cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Convert.ToString(result) == "Yes")
+            {   
+                imoDA.ClienteSet.Local.Remove(lista_cliente[index]);
+                imoDA.SaveChanges();
+                LerDados();
+            }
+            return;
+
+
+            
+
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
+            int index = listBox1.SelectedIndex;
+            if (index == -1)
+            {
+                return;
+            }
+            
+           List <Casa> lista_casa;
+            lista_casa = lista_cliente[index1].Casas.ToList();
+
+            Casa casa = (Casa)lista_casa.ElementAt(index);
+
+            Casas formcasa = new Casas(casa.IdCasa);
+            formcasa.FormClosed += Formcasa_FormClosed;
             this.Hide();
-            imoda.Show();
+            formcasa.Show();
+
         }
 
-        private void clienteSetDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Formcasa_FormClosed(object sender, FormClosedEventArgs e)
         {
+            this.Show();
+        }
 
+       
+
+        private void Formarrendamento_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+
+
+        private void listBox2_DoubleClick(object sender, EventArgs e)
+        {
+            int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
+            int index = listBox2.SelectedIndex;
+            if (index == -1)
+            {
+                return;
+            }
+
+            List<Arrendamento> lista_arrendamento;
+            lista_arrendamento = lista_cliente[index1].Arrendamentos.ToList();
+
+            Arrendamento arrenda = (Arrendamento)lista_arrendamento.ElementAt(index);
+
+            Arrendamentos formarrendamento = new Arrendamentos(arrenda.IdArrendamento);
+            formarrendamento.FormClosed += Formarrendamento_FormClosed;
+            this.Hide();
+            formarrendamento.Show();
+        }
+
+        private void listBox3_DoubleClick(object sender, EventArgs e)
+        {
+            int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
+            int index = listBox3.SelectedIndex;
+            if (index == -1)
+            {
+                return;
+            }
+            List<Venda> lista_vendas;
+            lista_vendas = lista_cliente[index].Aquisicoes.ToList();
+
+            Venda vendas = (Venda)lista_vendas.ElementAt(index);
+
+            Vendas formvendas = new Vendas(vendas.IdVenda);
+            formvendas.FormClosed += Formvendas_FormClosed;
+            this.Hide();
+            formvendas.Show();
+
+            }
+
+        private void Formvendas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
-    
-=======
-    }
->>>>>>> develop
 }

@@ -33,5 +33,15 @@ namespace ProjetoDA.Properties {
                 return ((string)(this["imo_DAConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;Initial Catalog=imo_DA;Integrated Security=True")]
+        public string imo_DAConnectionString1 {
+            get {
+                return ((string)(this["imo_DAConnectionString1"]));
+            }
+        }
     }
 }

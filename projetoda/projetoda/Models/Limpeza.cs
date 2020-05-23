@@ -17,14 +17,16 @@ namespace ProjetoDA.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Limpeza()
         {
-            this.Servico = new HashSet<Servico>();
+            this.Servicoes = new HashSet<Servico>();
         }
     
         public int IdLimpeza { get; set; }
-        public string Data { get; set; }
+        public System.DateTime Data { get; set; }
+        public int CasaIdCasa { get; set; }
+        public bool Emitido_fatura { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Servico> Servico { get; set; }
         public virtual Casa Casa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Servico> Servicoes { get; set; }
     }
 }
