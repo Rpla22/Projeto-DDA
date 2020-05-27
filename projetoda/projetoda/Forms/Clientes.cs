@@ -151,6 +151,10 @@ namespace ProjetoDA.Forms
         //funçao de click da datagridview
         private void clienteSetDataGridView_Click(object sender, EventArgs e)
         {
+            if (lista_cliente.Count == 0)
+            {
+                return;
+            }
             //lista os dados do cliente nas textbox e nas listbox 
             int index = clienteSetDataGridView.CurrentCell.RowIndex;
 
@@ -267,8 +271,29 @@ namespace ProjetoDA.Forms
         // função que apaga o cliente da base de dados se não exixtir nenhum relacionamento
         private void bt_apagar_Click(object sender, EventArgs e)
         {
+            if (lista_cliente.Count == 0)
+            {
+                return;
+            }
             int index = clienteSetDataGridView.CurrentCell.RowIndex;
-          if (lista_cliente[index].Casas.ToList()!=null ||lista_cliente[index].Arrendamentos.ToList()!=null || lista_cliente[index].Vendas.ToList() != null)
+            Cliente cliente = lista_cliente[index];
+
+            List<Casa> lista_casa_id;
+            List<Arrendamento> lista_arrendamento_id;
+            List<Venda> lista_venda_id;
+            lista_casa_id= (from Casa in imoDA.CasaSet
+                            where Casa.ClienteIdCliente == cliente.IdCliente
+                            select Casa).ToList();
+
+            lista_arrendamento_id = (from Arrendamento in imoDA.ArrendamentoSet
+                                     where Arrendamento.ClienteIdCliente == cliente.IdCliente
+                                     select Arrendamento).ToList();
+
+            lista_venda_id = (from Venda in imoDA.VendaSet
+                              where Venda.ClienteIdCliente == cliente.IdCliente
+                              select Venda).ToList();
+
+            if (lista_casa_id.Count!=0 ||lista_arrendamento_id.Count!=0 || lista_venda_id.Count != 0)
             {
                 MessageBox.Show("Não é possivel apagar cliente. O cliente tem algo acosiado ","Apagar cliente",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;

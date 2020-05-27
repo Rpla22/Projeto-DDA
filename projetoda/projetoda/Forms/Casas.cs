@@ -313,13 +313,26 @@ namespace ProjetoDA.Forms
         //função que apaga o registo da base de dados se a casa não tiver nada relacionado
         private void bt_apagar_Click(object sender, EventArgs e)
         {
-            int index = casaSetDataGridView.CurrentCell.RowIndex;
-            if (lista_casa[index].Limpezas.ToList() != null)
+            if (lista_casa.Count == 0)
             {
-                MessageBox.Show("Não é possivel apagar a casa. A casa tem algo acosiado ", "Apagar Casa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int index = casaSetDataGridView.CurrentCell.RowIndex;
+            if (index == -1)
+            {
                 return;
             }
             Casa casa = lista_casa[index];
+            List<Limpeza> lista_limpeza;
+            lista_limpeza = (from Limpeza in imoDA.LimpezaSet
+                              where Limpeza.CasaIdCasa == casa.IdCasa
+                              select Limpeza).ToList();
+            if (lista_limpeza.Count !=0)
+            {
+              MessageBox.Show("Não é possivel apagar a casa. A casa tem algo acosiado ", "Apagar Casa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
             if (casa is CasaVendavel)
             {
                 CasaVendavel casaVendavel = (CasaVendavel)casa;
@@ -353,6 +366,11 @@ namespace ProjetoDA.Forms
         //a função lista a casa nas caixas de text verificando qual o tipo de casa
         private void casaSetDataGridView_Click(object sender, EventArgs e)
         {
+            if (lista_casa.Count==0)
+            {
+                return;
+            }
+
             groupBox1.Enabled = true;
             bt_guardar.Enabled = true;
             groupBox2.Enabled = false;
@@ -497,6 +515,7 @@ namespace ProjetoDA.Forms
             }
             bt_limpezas.Text = "Gerir Limpezas (Total: "+total_limpeza+")";
         }
-    
+
+       
     }
 }

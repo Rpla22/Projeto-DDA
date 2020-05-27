@@ -616,6 +616,7 @@
             this.casaSetDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.casaSetDataGridView.Size = new System.Drawing.Size(355, 532);
             this.casaSetDataGridView.TabIndex = 4;
+       
             this.casaSetDataGridView.Click += new System.EventHandler(this.casaSetDataGridView_Click);
             // 
             // IdCasa
