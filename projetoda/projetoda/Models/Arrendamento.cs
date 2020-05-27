@@ -14,12 +14,18 @@ namespace ProjetoDA.Models
     
     public partial class Arrendamento
     {
+        public Arrendamento()
+        {
+        }
+
         public int IdArrendamento { get; set; }
-        public string InicioContrato { get; set; }
-        public string DuracaoMeses { get; set; }
-        public string Renovavel { get; set; }
+        public System.DateTime InicioContrato { get; set; }
+        public int DuracaoMeses { get; set; }
+        public bool Renovavel { get; set; }
+        public int ClienteIdCliente { get; set; }
+        public int CasaArrendavelIdCasa { get; set; }
     
-        public virtual Cliente Arrendatario { get; set; }
+        public virtual Cliente Cliente { get; set; }
         public virtual CasaArrendavel CasaArrendavel { get; set; }
     }
 }

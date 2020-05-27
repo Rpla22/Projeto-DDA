@@ -15,21 +15,27 @@ namespace ProjetoDA.Forms
 {
     public partial class Casas : Form
     {
+        //variaveis de utilização do projeto
         private ModelImoDaContainer imoDA;
+        //lista de dados da base de dados dos clientes e das casas
         private List<Cliente> lista_cliente;
         private List<Casa> lista_casa;
+
         private int casa_id = 0;
 
         public Casas(int id_casa)
         {
-            
+            //inicializa o form
             InitializeComponent();
             imoDA = new ModelImoDaContainer();
+            // carrega os dados dos clientes para a lista
             lista_cliente = imoDA.ClienteSet.ToList();
             LerDados_cliente();
             LerDados();
             casa_id = id_casa;
- }
+        }
+
+        //função que lê os dados dos clientes e coloca-os na combobox
         private void LerDados_cliente()
         {
             foreach (Cliente cliente in lista_cliente)
@@ -38,6 +44,7 @@ namespace ProjetoDA.Forms
             }
         }
 
+        //função que lê os dados na base de dados e os coloca na lista das casas
         private void LerDados()
         {
             imoDA.Dispose();
@@ -50,8 +57,7 @@ namespace ProjetoDA.Forms
             lista_casa = imoDA.CasaSet.ToList();
         }
 
-
-
+        //função que ativa a group box arrendavel ou desativa
         private void cb_arrendavel_Click(object sender, EventArgs e)
         {
             if (cb_arrendavel.Checked == true)
@@ -66,6 +72,7 @@ namespace ProjetoDA.Forms
             }
         }
 
+        //função que ativa a group box vendas ou desativa
         private void cb_vendavel_Click(object sender, EventArgs e)
         {
             if (cb_vendavel.Checked == true)
@@ -81,9 +88,10 @@ namespace ProjetoDA.Forms
              
         }
 
-
+        //função que guarda a casa
         private void bt_guardar_Click(object sender, EventArgs e)
         {
+            //verifica se os campos estão todos preenchidos
             if (tb_localidade.Text == "" || tb_rua.Text == "" || tb_numero.Text == "" || tb_andar.Text == "" || nud_area.Text == "" || nud_assoalhadas.Text == "" || nud_wc.Text == "" || nud_pisos.Text == "" || cb_tipo.Text == "" || cb_proprietario.Text == "")
             {
                 MessageBox.Show("Todos os campos sao obrigatórios");
@@ -93,7 +101,7 @@ namespace ProjetoDA.Forms
              Cliente cliente = lista_cliente[index];
 
 
-
+            // verifica se a casa a guardar não existe na base de dados
             foreach (Casa casas in lista_casa)
             {
                 if (casas.IdCasa == Convert.ToInt32(lb_id.Text))
@@ -131,7 +139,7 @@ namespace ProjetoDA.Forms
                     }
                 }
             }
-
+            //gurda a casa do tipo que foi inserido para uma nova casa 
             if ( cb_arrendavel.Checked==false && cb_vendavel.Checked == false)
             {
                 Casa novaCasa = new Casa(tb_localidade.Text, tb_rua.Text, tb_numero.Text, tb_andar.Text, nud_area.Text, nud_assoalhadas.Text, nud_wc.Text, nud_pisos.Text, cb_tipo.Text, cliente.IdCliente);
@@ -185,7 +193,7 @@ namespace ProjetoDA.Forms
 
         }
 
-     
+        // função que verifica se o valor inserido é diferente de numeros
         private void tb_numero_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -194,7 +202,7 @@ namespace ProjetoDA.Forms
             }
         }
 
-      
+        // função que verifica se o valor inserido é diferente de numeros
         private void tb_andar_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -203,13 +211,24 @@ namespace ProjetoDA.Forms
             }
         }
 
-
+        // função que limpa os dados da textbox para um novo registo 
         private void bt_nova_Click(object sender, EventArgs e)
         {
             groupBox1.Enabled = true;
+            cb_arrendavel.Checked = false;
+            cb_vendavel.Checked = false;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
             bt_guardar.Enabled = true;
             cb_vendavel.Enabled = true;
             cb_arrendavel.Enabled = true;
+            bt_venda_ver.Enabled = false;
+            bt_arrendamento_ver.Enabled = false;
+            tb_comissao_arrendamento.Text = "";
+            tb_valor_arrendamento.Text = "";
+            tb_comissao_venda.Text = "";
+            tb_valor_venda.Text = "";
+            bt_limpezas.Enabled = false;
             if (lista_casa.Count==0)
             {
                 lb_id.Text = "1";
@@ -232,20 +251,31 @@ namespace ProjetoDA.Forms
             cb_proprietario.Text = "";
         } 
    
-
-    //funçoes para espera de formulários segintes fecharem e abrir os formulários
+        //funçoes para espera de formulários segintes fecharem e abrir os formulários
         private void bt_arrendamento_ver_Click(object sender, EventArgs e)
         {
+            int index = casaSetDataGridView.CurrentCell.RowIndex;
+            if (index == -1)
+            {
+                return;
+            }
+            Casa casa = imoDA.CasaSet.Local[index];
             this.Hide();
-            Arrendamentos arrendamentos = new Arrendamentos(0);
+            Arrendamentos arrendamentos = new Arrendamentos(casa.IdCasa,false);
             arrendamentos.FormClosed += Arrendamentos_FormClosed;
             arrendamentos.Show();
         }
 
         private void bt_venda_ver_Click(object sender, EventArgs e)
         {
+            int index = casaSetDataGridView.CurrentCell.RowIndex;
+            if (index == -1)
+            {
+                return;
+            }
+            Casa casa = imoDA.CasaSet.Local[index];
             this.Hide();
-            Vendas venda = new Vendas(0);
+            Vendas venda = new Vendas(casa.IdCasa, false,0) ;
             venda.FormClosed += Venda_FormClosed;
             venda.Show();
         }
@@ -280,6 +310,7 @@ namespace ProjetoDA.Forms
             this.Show();
         }
 
+        //função que apaga o registo da base de dados se a casa não tiver nada relacionado
         private void bt_apagar_Click(object sender, EventArgs e)
         {
             int index = casaSetDataGridView.CurrentCell.RowIndex;
@@ -301,7 +332,7 @@ namespace ProjetoDA.Forms
             if (casa is CasaArrendavel)
             {
                 CasaArrendavel casaArrendavel = (CasaArrendavel)casa;
-                if (casaArrendavel.Arrendamento.ToList() != null)
+                if (casaArrendavel.Arrendamentos.ToList() != null)
                 {
                     MessageBox.Show("Não é possivel apagar a casa. A casa tem algo acosiado ", "Apagar Casa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -318,6 +349,8 @@ namespace ProjetoDA.Forms
             return;
         }
 
+        //função de click da datagridview
+        //a função lista a casa nas caixas de text verificando qual o tipo de casa
         private void casaSetDataGridView_Click(object sender, EventArgs e)
         {
             groupBox1.Enabled = true;
@@ -326,6 +359,7 @@ namespace ProjetoDA.Forms
             groupBox3.Enabled = false;
             cb_arrendavel.Enabled = false;
             cb_vendavel.Enabled = false;
+            bt_limpezas.Enabled = true;
 
             int index = casaSetDataGridView.CurrentCell.RowIndex;
 
@@ -335,10 +369,10 @@ namespace ProjetoDA.Forms
             }
 
              Casa casa = imoDA.CasaSet.Local[index];
-            // Casa casa = lista_casa.ElementAt(index);
             Valor_Limpeza(casa.IdCasa);
             if (casa is CasaVendavel)
             {
+                bt_venda_ver.Enabled = true;
                 groupBox3.Enabled = false;
                 CasaVendavel casaVendavel = (CasaVendavel)casa;
                 lb_id.Text = casaVendavel.IdCasa.ToString();
@@ -355,6 +389,7 @@ namespace ProjetoDA.Forms
             }
             else if (casa is CasaArrendavel)
             {
+                bt_arrendamento_ver.Enabled = true;
                 groupBox2.Enabled = true;
                 CasaArrendavel casaArrendavel = (CasaArrendavel)casa;
                 lb_id.Text = casaArrendavel.IdCasa.ToString();
@@ -385,6 +420,7 @@ namespace ProjetoDA.Forms
 
         }
 
+        //função que escreve os valores da casa independentemente do tipo de casa
         private void Escreve_valores (Casa casa)
         {
             tb_localidade.Text = casa.Localidade;
@@ -410,6 +446,7 @@ namespace ProjetoDA.Forms
             
         }
 
+        // funçao que seleciona a casa e mostra os dados que foi enviada quando é iniciado o form
         private void Casas_Load(object sender, EventArgs e)
         {
             if (casa_id == 0)
@@ -423,14 +460,16 @@ namespace ProjetoDA.Forms
                 {
                     if (casa.IdCasa == casa_id)
                     {
-                        casaSetDataGridView.Rows[index].Selected = true;
+                        casaSetDataGridView.CurrentCell = casaSetDataGridView[1,index];         
                         casaSetDataGridView_Click(sender, e);
+                        return;
                     }
                     index++;
                 }
             }
         }
     
+        //função que soma o valor das limpezas e coloca o valor no botão de limpezas da referente casa
         private void Valor_Limpeza(int casa_id)
         {
             List<Servico> lista_servico;

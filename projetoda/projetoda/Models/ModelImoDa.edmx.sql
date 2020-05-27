@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/23/2020 17:54:32
+-- Date Created: 05/25/2020 22:08:47
 -- Generated from EDMX file: D:\Projetos\Projeto-DDA\projetoda\projetoda\Models\ModelImoDa.edmx
 -- --------------------------------------------------
 
@@ -20,12 +20,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ClienteVenda]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[VendaSet] DROP CONSTRAINT [FK_ClienteVenda];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ClienteArrendamento]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ArrendamentoSet] DROP CONSTRAINT [FK_ClienteArrendamento];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ArrendamentoCasaArrendavel]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ArrendamentoSet] DROP CONSTRAINT [FK_ArrendamentoCasaArrendavel];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ClienteCasa]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CasaSet] DROP CONSTRAINT [FK_ClienteCasa];
 GO
@@ -38,11 +32,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_LimpezaServico]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ServicoSet] DROP CONSTRAINT [FK_LimpezaServico];
 GO
-IF OBJECT_ID(N'[dbo].[FK_CasaArrendavel_inherits_Casa]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CasaSet_CasaArrendavel] DROP CONSTRAINT [FK_CasaArrendavel_inherits_Casa];
+IF OBJECT_ID(N'[dbo].[FK_ClienteArrendamento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArrendamentoSet] DROP CONSTRAINT [FK_ClienteArrendamento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CasaArrendavelArrendamento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArrendamentoSet] DROP CONSTRAINT [FK_CasaArrendavelArrendamento];
 GO
 IF OBJECT_ID(N'[dbo].[FK_CasaVendavel_inherits_Casa]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CasaSet_CasaVendavel] DROP CONSTRAINT [FK_CasaVendavel_inherits_Casa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CasaArrendavel_inherits_Casa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CasaSet_CasaArrendavel] DROP CONSTRAINT [FK_CasaArrendavel_inherits_Casa];
 GO
 
 -- --------------------------------------------------
@@ -67,11 +67,11 @@ GO
 IF OBJECT_ID(N'[dbo].[VendaSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[VendaSet];
 GO
-IF OBJECT_ID(N'[dbo].[CasaSet_CasaArrendavel]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[CasaSet_CasaArrendavel];
-GO
 IF OBJECT_ID(N'[dbo].[CasaSet_CasaVendavel]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CasaSet_CasaVendavel];
+GO
+IF OBJECT_ID(N'[dbo].[CasaSet_CasaArrendavel]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CasaSet_CasaArrendavel];
 GO
 
 -- --------------------------------------------------
@@ -127,30 +127,22 @@ GO
 -- Creating table 'ArrendamentoSet'
 CREATE TABLE [dbo].[ArrendamentoSet] (
     [IdArrendamento] int IDENTITY(1,1) NOT NULL,
-    [InicioContrato] nvarchar(max)  NOT NULL,
-    [DuracaoMeses] nvarchar(max)  NOT NULL,
-    [Renovavel] nvarchar(max)  NOT NULL,
-    [Arrendatario_IdCliente] int  NOT NULL,
-    [CasaArrendavel_IdCasa] int  NULL
+    [InicioContrato] datetime  NOT NULL,
+    [DuracaoMeses] int  NOT NULL,
+    [Renovavel] bit  NOT NULL,
+    [ClienteIdCliente] int  NOT NULL,
+    [CasaArrendavelIdCasa] int  NOT NULL
 );
 GO
 
 -- Creating table 'VendaSet'
 CREATE TABLE [dbo].[VendaSet] (
     [IdVenda] int IDENTITY(1,1) NOT NULL,
-    [DataVenda] nvarchar(max)  NOT NULL,
-    [ValorNegociado] nvarchar(max)  NOT NULL,
-    [ComissaoNegociada] nvarchar(max)  NOT NULL,
+    [DataVenda] datetime  NOT NULL,
+    [ValorNegociado] decimal(18,0)  NOT NULL,
+    [ComissaoNegociada] decimal(18,0)  NOT NULL,
     [CasaVendavelIdCasa] int  NOT NULL,
-    [Comprador_IdCliente] int  NOT NULL
-);
-GO
-
--- Creating table 'CasaSet_CasaArrendavel'
-CREATE TABLE [dbo].[CasaSet_CasaArrendavel] (
-    [ValorBaseMes] nvarchar(max)  NOT NULL,
-    [Comissao] nvarchar(max)  NOT NULL,
-    [IdCasa] int  NOT NULL
+    [ClienteIdCliente] int  NOT NULL
 );
 GO
 
@@ -158,6 +150,14 @@ GO
 CREATE TABLE [dbo].[CasaSet_CasaVendavel] (
     [ValorBaseVenda] nvarchar(max)  NOT NULL,
     [ValorComissao] nvarchar(max)  NOT NULL,
+    [IdCasa] int  NOT NULL
+);
+GO
+
+-- Creating table 'CasaSet_CasaArrendavel'
+CREATE TABLE [dbo].[CasaSet_CasaArrendavel] (
+    [ValorBaseMes] nvarchar(max)  NOT NULL,
+    [Comissao] nvarchar(max)  NOT NULL,
     [IdCasa] int  NOT NULL
 );
 GO
@@ -202,66 +202,21 @@ ADD CONSTRAINT [PK_VendaSet]
     PRIMARY KEY CLUSTERED ([IdVenda] ASC);
 GO
 
--- Creating primary key on [IdCasa] in table 'CasaSet_CasaArrendavel'
-ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
-ADD CONSTRAINT [PK_CasaSet_CasaArrendavel]
-    PRIMARY KEY CLUSTERED ([IdCasa] ASC);
-GO
-
 -- Creating primary key on [IdCasa] in table 'CasaSet_CasaVendavel'
 ALTER TABLE [dbo].[CasaSet_CasaVendavel]
 ADD CONSTRAINT [PK_CasaSet_CasaVendavel]
     PRIMARY KEY CLUSTERED ([IdCasa] ASC);
 GO
 
+-- Creating primary key on [IdCasa] in table 'CasaSet_CasaArrendavel'
+ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
+ADD CONSTRAINT [PK_CasaSet_CasaArrendavel]
+    PRIMARY KEY CLUSTERED ([IdCasa] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [Comprador_IdCliente] in table 'VendaSet'
-ALTER TABLE [dbo].[VendaSet]
-ADD CONSTRAINT [FK_ClienteVenda]
-    FOREIGN KEY ([Comprador_IdCliente])
-    REFERENCES [dbo].[ClienteSet]
-        ([IdCliente])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ClienteVenda'
-CREATE INDEX [IX_FK_ClienteVenda]
-ON [dbo].[VendaSet]
-    ([Comprador_IdCliente]);
-GO
-
--- Creating foreign key on [Arrendatario_IdCliente] in table 'ArrendamentoSet'
-ALTER TABLE [dbo].[ArrendamentoSet]
-ADD CONSTRAINT [FK_ClienteArrendamento]
-    FOREIGN KEY ([Arrendatario_IdCliente])
-    REFERENCES [dbo].[ClienteSet]
-        ([IdCliente])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ClienteArrendamento'
-CREATE INDEX [IX_FK_ClienteArrendamento]
-ON [dbo].[ArrendamentoSet]
-    ([Arrendatario_IdCliente]);
-GO
-
--- Creating foreign key on [CasaArrendavel_IdCasa] in table 'ArrendamentoSet'
-ALTER TABLE [dbo].[ArrendamentoSet]
-ADD CONSTRAINT [FK_ArrendamentoCasaArrendavel]
-    FOREIGN KEY ([CasaArrendavel_IdCasa])
-    REFERENCES [dbo].[CasaSet_CasaArrendavel]
-        ([IdCasa])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ArrendamentoCasaArrendavel'
-CREATE INDEX [IX_FK_ArrendamentoCasaArrendavel]
-ON [dbo].[ArrendamentoSet]
-    ([CasaArrendavel_IdCasa]);
-GO
 
 -- Creating foreign key on [ClienteIdCliente] in table 'CasaSet'
 ALTER TABLE [dbo].[CasaSet]
@@ -323,18 +278,63 @@ ON [dbo].[ServicoSet]
     ([LimpezaIdLimpeza]);
 GO
 
--- Creating foreign key on [IdCasa] in table 'CasaSet_CasaArrendavel'
-ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
-ADD CONSTRAINT [FK_CasaArrendavel_inherits_Casa]
+-- Creating foreign key on [ClienteIdCliente] in table 'ArrendamentoSet'
+ALTER TABLE [dbo].[ArrendamentoSet]
+ADD CONSTRAINT [FK_ClienteArrendamento]
+    FOREIGN KEY ([ClienteIdCliente])
+    REFERENCES [dbo].[ClienteSet]
+        ([IdCliente])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ClienteArrendamento'
+CREATE INDEX [IX_FK_ClienteArrendamento]
+ON [dbo].[ArrendamentoSet]
+    ([ClienteIdCliente]);
+GO
+
+-- Creating foreign key on [CasaArrendavelIdCasa] in table 'ArrendamentoSet'
+ALTER TABLE [dbo].[ArrendamentoSet]
+ADD CONSTRAINT [FK_CasaArrendavelArrendamento]
+    FOREIGN KEY ([CasaArrendavelIdCasa])
+    REFERENCES [dbo].[CasaSet_CasaArrendavel]
+        ([IdCasa])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CasaArrendavelArrendamento'
+CREATE INDEX [IX_FK_CasaArrendavelArrendamento]
+ON [dbo].[ArrendamentoSet]
+    ([CasaArrendavelIdCasa]);
+GO
+
+-- Creating foreign key on [ClienteIdCliente] in table 'VendaSet'
+ALTER TABLE [dbo].[VendaSet]
+ADD CONSTRAINT [FK_ClienteVenda]
+    FOREIGN KEY ([ClienteIdCliente])
+    REFERENCES [dbo].[ClienteSet]
+        ([IdCliente])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ClienteVenda'
+CREATE INDEX [IX_FK_ClienteVenda]
+ON [dbo].[VendaSet]
+    ([ClienteIdCliente]);
+GO
+
+-- Creating foreign key on [IdCasa] in table 'CasaSet_CasaVendavel'
+ALTER TABLE [dbo].[CasaSet_CasaVendavel]
+ADD CONSTRAINT [FK_CasaVendavel_inherits_Casa]
     FOREIGN KEY ([IdCasa])
     REFERENCES [dbo].[CasaSet]
         ([IdCasa])
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [IdCasa] in table 'CasaSet_CasaVendavel'
-ALTER TABLE [dbo].[CasaSet_CasaVendavel]
-ADD CONSTRAINT [FK_CasaVendavel_inherits_Casa]
+-- Creating foreign key on [IdCasa] in table 'CasaSet_CasaArrendavel'
+ALTER TABLE [dbo].[CasaSet_CasaArrendavel]
+ADD CONSTRAINT [FK_CasaArrendavel_inherits_Casa]
     FOREIGN KEY ([IdCasa])
     REFERENCES [dbo].[CasaSet]
         ([IdCasa])

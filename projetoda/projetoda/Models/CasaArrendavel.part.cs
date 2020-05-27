@@ -8,6 +8,7 @@ namespace ProjetoDA.Models
 {
     public partial class CasaArrendavel :Casa
     {
+        //construtor da classe CasaArrendavel que cria a CasaArrendavel
         public CasaArrendavel(string localidade, string rua, string numero, string andar, string area, string numeroAssoalhadas, string numeroWc, string numeroPisos, string tipo, int cliente,string valorBaseMes, string comissao):base(localidade, rua, numero, andar, area, numeroAssoalhadas, numeroWc, numeroPisos, tipo, cliente)
         {
             ValorBaseMes = valorBaseMes;

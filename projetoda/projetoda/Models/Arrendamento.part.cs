@@ -8,18 +8,20 @@ namespace ProjetoDA.Models
 {
     public partial class Arrendamento
     {
-        public Arrendamento(string inicioContrato, string duracaoMeses, string renovavel, Cliente arrendatario, CasaArrendavel casaArrendavel)
+        //construtor da classe Arrendamento que cria o Arrendamento
+        public Arrendamento(DateTime inicioContrato, int duracaoMeses, Boolean renovavel, int arrendatario, int casaarrendavel)
         {
             InicioContrato = inicioContrato;
             DuracaoMeses = duracaoMeses;
             Renovavel = renovavel;
-            Arrendatario = arrendatario;
-            CasaArrendavel = casaArrendavel;
+            ClienteIdCliente = arrendatario;
+            CasaArrendavelIdCasa = casaarrendavel;
         }
 
+        //função que retorna os dados dos Arrendamentos
         public override string ToString()
         {
-            return "Inicio: " + InicioContrato + " " + DuracaoMeses + " Renovável:" + Renovavel + " a " + Arrendatario.Nome;
+            return "Inicio: " + InicioContrato + " " + DuracaoMeses + " Renovável:" + Renovavel;
         }
     }
 }

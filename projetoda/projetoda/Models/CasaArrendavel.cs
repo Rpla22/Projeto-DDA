@@ -17,13 +17,13 @@ namespace ProjetoDA.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CasaArrendavel()
         {
-            this.Arrendamento = new HashSet<Arrendamento>();
+            this.Arrendamentos = new HashSet<Arrendamento>();
         }
     
         public string ValorBaseMes { get; set; }
         public string Comissao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Arrendamento> Arrendamento { get; set; }
+        public virtual ICollection<Arrendamento> Arrendamentos { get; set; }
     }
 }

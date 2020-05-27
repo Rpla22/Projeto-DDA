@@ -8,15 +8,17 @@ namespace ProjetoDA.Models
 {
     public partial class Venda 
     {
-        public Venda(string dataVenda, string valorNegociado, string comissaoNegociada, Cliente comprador, CasaVendavel casaVendavel)
+        //construtor da classe Venda que cria as vendas
+        public Venda(DateTime dataVenda, decimal valorNegociado, decimal comissaoNegociada, int casa_vendal, int cliente_id)
         {
             DataVenda = dataVenda;
             ValorNegociado = valorNegociado;
             ComissaoNegociada = comissaoNegociada;
-            Comprador = comprador;
-            CasaVendavel = casaVendavel;
+            CasaVendavelIdCasa = casa_vendal;
+            ClienteIdCliente = cliente_id;
         }
 
+        //função que retorna os dados da venda
         public override string ToString()
         {
             return CasaVendavel.Numero + " " + CasaVendavel.Rua + " " + CasaVendavel.Localidade;

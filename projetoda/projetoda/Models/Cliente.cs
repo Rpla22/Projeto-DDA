@@ -17,9 +17,9 @@ namespace ProjetoDA.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
         {
-            this.Aquisicoes = new HashSet<Venda>();
-            this.Arrendamentos = new HashSet<Arrendamento>();
             this.Casas = new HashSet<Casa>();
+            this.Arrendamentos = new HashSet<Arrendamento>();
+            this.Vendas = new HashSet<Venda>();
         }
     
         public int IdCliente { get; set; }
@@ -29,10 +29,10 @@ namespace ProjetoDA.Models
         public string Contacto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venda> Aquisicoes { get; set; }
+        public virtual ICollection<Casa> Casas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Arrendamento> Arrendamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Casa> Casas { get; set; }
+        public virtual ICollection<Venda> Vendas { get; set; }
     }
 }

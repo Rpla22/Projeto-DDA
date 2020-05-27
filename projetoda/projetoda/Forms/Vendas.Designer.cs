@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vendas));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +48,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.bt_efetivar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,16 +96,15 @@
             this.lb_proprietario.Size = new System.Drawing.Size(73, 13);
             this.lb_proprietario.TabIndex = 5;
             this.lb_proprietario.Text = "lb_proprietario";
-            this.lb_proprietario.Click += new System.EventHandler(this.label5_Click);
             // 
             // lb_estado
             // 
             this.lb_estado.AutoSize = true;
             this.lb_estado.Location = new System.Drawing.Point(107, 52);
             this.lb_estado.Name = "lb_estado";
-            this.lb_estado.Size = new System.Drawing.Size(53, 13);
+            this.lb_estado.Size = new System.Drawing.Size(59, 13);
             this.lb_estado.TabIndex = 4;
-            this.lb_estado.Text = "lb_estado";
+            this.lb_estado.Text = "Disponivel ";
             // 
             // lb_comissao
             // 
@@ -195,7 +197,6 @@
             this.label9.Size = new System.Drawing.Size(13, 13);
             this.label9.TabIndex = 16;
             this.label9.Text = "€";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -214,12 +215,24 @@
             this.bt_efetivar.TabIndex = 18;
             this.bt_efetivar.Text = "Efetivar Venda";
             this.bt_efetivar.UseVisualStyleBackColor = true;
+            this.bt_efetivar.Click += new System.EventHandler(this.bt_efetivar_Click);
             // 
-            // Venda
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(275, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 96);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 356);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.bt_efetivar);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -239,8 +252,14 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Venda";
-            this.Text = "Venda";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.Name = "Vendas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Venda de casa";
+            this.Load += new System.EventHandler(this.Vendas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +286,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button bt_efetivar;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -16,23 +16,29 @@ namespace ProjetoDA.Forms
 {
     public partial class Limpezas : Form
     {
+        //funções que são utilizadas no form 
         private int casa_id;
         private ModelImoDaContainer imoDA;
+        // variaveis das listas dos dados
         private List<Casa> lista_casa;
         private List<Limpeza> lista_limpezas;
         private List<Servico> lista_servico;
+        // variaveis para o serviço de imprimir
         private Font printFont;
         private StreamReader streamToPrint;
+
+        
         public Limpezas(int id_casa)
         {
+            //inicialização fo formulário
             InitializeComponent();
             imoDA = new ModelImoDaContainer();
             casa_id = id_casa;
             LerDados();
             lista_casa = imoDA.CasaSet.ToList();
-            //lista_limpezas = imoDA.LimpezaSet.ToList();
         }
 
+        // função que lê os dados das limpezas da base de dados e os coloca na vista do form
         private void LerDados()
         {
             listBox_limpezas.Items.Clear();
@@ -51,6 +57,7 @@ namespace ProjetoDA.Forms
             }
             }
 
+        //função que lê os serviços da limpeza referida
         private int Lerservicos(int id_limpeza)
         {
             int total_limpeza;
@@ -69,6 +76,7 @@ namespace ProjetoDA.Forms
             return total_limpeza;      
             }     
 
+        //função que lista todos os serviços referentes ao id da limpeza
         private void Listarservico(int id_limpeza)
         {
             lista_servico.Clear();
@@ -84,9 +92,11 @@ namespace ProjetoDA.Forms
                 listBox_servicos.DataSource = lista_servico;
                 listBox_servicos.SelectedIndex = 0;
         }
+        
+        // função que excuta quando o form é inicializado
+        // função escreve no form o tipo de casa e os seus dados
         private void Limpezas_Load(object sender, EventArgs e)
         {
-
             bt_emitir.Enabled = false;
             if (casa_id == 0)
             {
@@ -115,6 +125,8 @@ namespace ProjetoDA.Forms
             }
         }
 
+        //função que é excuta quando um tecla é precionada em uma listbox quando um valor está selecionado 
+        // função apaga um item selecionada na listbox
         private void listBox1_KeyDown(object sender, KeyEventArgs e)
         {
             int index1 = listBox_limpezas.SelectedIndex;
@@ -135,6 +147,8 @@ namespace ProjetoDA.Forms
             }
         }
 
+        // quando um valor da combobox é alterado a função é excutada
+        // esta função coloca o calor do tipo de serviço selecionado
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0)
@@ -151,6 +165,8 @@ namespace ProjetoDA.Forms
             }
         }
 
+        //função que excuta quando existe um click na list_box limpezas
+        //a função lista os serviço referente a limpeza selecionada
         private void listBox2_Click(object sender, EventArgs e)
         {
             int index = listBox_limpezas.SelectedIndex;
@@ -173,9 +189,11 @@ namespace ProjetoDA.Forms
                 }  
                 groupBox1.Enabled= true;
                 bt_emitir.Enabled = true;
+                
             }
         }
 
+        // função que excuta quando click do botão emitir
         private void bt_emitir_Click(object sender, EventArgs e)
         {
             int index = listBox_limpezas.SelectedIndex;
@@ -188,6 +206,7 @@ namespace ProjetoDA.Forms
                 return;
             }    
             Limpeza limpeza = lista_limpezas[index];
+            // se não existir serviços acossiados a limpeza essa limpeza é eliminada se for aceite pelo cliente
             if (Lerservicos(limpeza.IdLimpeza) == 0)
             {
                 DialogResult result = MessageBox.Show("Pretende apagar a limpeza. Esta não contem serviços ?", "Apagar Limpeza", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -215,6 +234,7 @@ namespace ProjetoDA.Forms
                                     textDialog.Filter = "Text Files | *.txt";
                                     textDialog.DefaultExt = "txt";
                                     textDialog.Title = "Invoice";
+                                    //pergunta onde quer guardar o ficheiro
                                     if (textDialog.ShowDialog() == DialogResult.OK)
                                     {
 
@@ -228,7 +248,7 @@ namespace ProjetoDA.Forms
                                         message += Environment.NewLine + "Casa :" + casa.Localidade;
                                         message += Environment.NewLine + "Morada :" + casa.Rua + " Nº" + casa.Numero + " Andar:" + casa.Andar;
                                         message += Environment.NewLine + "Area :" + casa.Area;
-                                        message += Environment.NewLine + "Nº Assoalhadas :" + casa.Area;
+                                        message += Environment.NewLine + "Nº Assoalhadas :" + casa.NumeroAssoalhadas;
                                         message += Environment.NewLine + "Nº Wc :" + casa.NumeroWc;
                                         message += Environment.NewLine + "Nº Pisos :" + casa.NumeroPisos;
                                         message += Environment.NewLine + "Tipo :" + casa.Tipo;
@@ -246,10 +266,11 @@ namespace ProjetoDA.Forms
                                         File.WriteAllText(path, message);
 
                                         DialogResult resulta = MessageBox.Show("Pretende Imprimir a fatura ?", "Emitir Fatura", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                        // se o utilizador disser que pretende imprimir a fatura o codigo seguinte é excutado
                                         if (Convert.ToString(resulta) == "Yes")
                                         {
                                             try
-                                            {
+                                            {                                          
                                                  streamToPrint = new StreamReader
                                                        (path);
                                                 try
@@ -263,12 +284,8 @@ namespace ProjetoDA.Forms
                                                     pdialog.Document = pd;
                                                     if (pdialog.ShowDialog() == DialogResult.OK)
                                                     {
-                                                        pd.Print();
-                                                        limpeza.Emitido_fatura = true;
-                                                        groupBox1.Enabled = false;
-                                                        imoDA.SaveChanges();
-                                                        LerDados();
-                                                        return;
+                                                        //Imprime o documento pela impressora que o utilizador selecionou
+                                                        pd.Print();                                     
                                                     }
                                                 }
                                                 finally
@@ -280,7 +297,12 @@ namespace ProjetoDA.Forms
                                             {
                                                 MessageBox.Show(ex.Message);
                                             }
-                                        }    
+                                        }
+                                        limpeza.Emitido_fatura = true;
+                                        groupBox1.Enabled = false;
+                                        imoDA.SaveChanges();
+                                        LerDados();
+                                        return;
                                     }
                                 }
                             }
@@ -291,7 +313,7 @@ namespace ProjetoDA.Forms
             }          
         }
 
-
+    // função que imprime o documento
     private void pd_PrintPage(object sender, PrintPageEventArgs ev)
     {
         float linesPerPage = 0;
@@ -323,11 +345,9 @@ namespace ProjetoDA.Forms
             ev.HasMorePages = false;
     }
 
-
-
-
+    //botão de insere serviço na Limpeza
     private void bt_inserir_Click(object sender, EventArgs e)
-        {
+    {
             int index = listBox_limpezas.SelectedIndex;
             if (index == -1)
             {
@@ -366,9 +386,11 @@ namespace ProjetoDA.Forms
             listBox_limpezas.SelectedIndex = index;
 
             return;
-        }
-        private void bt_criar_Click(object sender, EventArgs e)
-        {
+    }
+
+    //função que cria uma limpeza
+    private void bt_criar_Click(object sender, EventArgs e)
+    {
             Limpeza limpeza = new Limpeza(dateTimePicker1.Value, casa_id, false);
             try
             {
@@ -380,7 +402,7 @@ namespace ProjetoDA.Forms
                 MessageBox.Show(ex.ToString());
             }
             LerDados();
-        }
+    }
 
     } 
 }

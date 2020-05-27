@@ -14,13 +14,18 @@ namespace ProjetoDA.Models
     
     public partial class Venda
     {
+        public Venda()
+        {
+        }
+
         public int IdVenda { get; set; }
-        public string DataVenda { get; set; }
-        public string ValorNegociado { get; set; }
-        public string ComissaoNegociada { get; set; }
+        public System.DateTime DataVenda { get; set; }
+        public decimal ValorNegociado { get; set; }
+        public decimal ComissaoNegociada { get; set; }
         public int CasaVendavelIdCasa { get; set; }
+        public int ClienteIdCliente { get; set; }
     
-        public virtual Cliente Comprador { get; set; }
         public virtual CasaVendavel CasaVendavel { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

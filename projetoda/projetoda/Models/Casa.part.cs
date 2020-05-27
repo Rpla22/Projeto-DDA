@@ -8,6 +8,7 @@ namespace ProjetoDA.Models
 {
     public partial class Casa
     {
+        //construtor da classe Casa que cria a Casa
         public Casa(string localidade, string rua, string numero, string andar, string area, string numeroAssoalhadas, string numeroWc, string numeroPisos, string tipo, int cliente)
         {
             Localidade = localidade;
@@ -22,7 +23,7 @@ namespace ProjetoDA.Models
             ClienteIdCliente = cliente;
         }
 
-
+        //função que retorna os dados dos serviços
         public override string ToString()
         {
             return Tipo + ": " + Rua + " " + Numero;

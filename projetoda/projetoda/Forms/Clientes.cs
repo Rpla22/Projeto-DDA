@@ -15,15 +15,18 @@ namespace ProjetoDA.Forms
     public partial class Clientes : Form
     {
         private ModelImoDaContainer imoDA;
+        //lista com os clientes que estão na base de dados
         private List<Cliente> lista_cliente;
 
         public Clientes()
         {
+            //inicialização do form clientes 
             imoDA = new ModelImoDaContainer();
             InitializeComponent();
             LerDados();
         }
 
+        //funçao que lê os dados dos clientes
         private void LerDados()
         {
             imoDA.Dispose();
@@ -38,7 +41,7 @@ namespace ProjetoDA.Forms
                              select cliente).ToList();            
         }
        
-
+        //função qu guarda o cliente na base de dados
         private void button1_Click(object sender, EventArgs e)
         {
             if(tb_nome.Text== "" || tb_nif.Text=="" || tb_morada.Text=="" || tb_contacto.Text=="")
@@ -49,6 +52,7 @@ namespace ProjetoDA.Forms
 
             foreach (Cliente cliente in lista_cliente)
             {
+                //se o cliente que pretende guardar já existir na base de dados pergunta se pretende alterar os dados
                 if(cliente.NIF == tb_nif.Text)
                 {
                     DialogResult result = MessageBox.Show("Pretende alterar as informações do cliente com o NIF: " + cliente.NIF + "?", "O Cliente ja se encontra registado", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
@@ -73,7 +77,7 @@ namespace ProjetoDA.Forms
                 return;
             }
 
-
+            //guarda o cliente
             Cliente novoCliente = new Cliente(tb_nome.Text, tb_nif.Text, tb_morada.Text, tb_contacto.Text);
             try
             {
@@ -87,12 +91,13 @@ namespace ProjetoDA.Forms
             LerDados();
         }
 
-
+        //se o dado na textbox_nif for diferente de numero não deixa introduzir
         private void tb_nif_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+        //se o dado na textbox_contato for diferente de numero não deixa introduzir
         private void tb_contacto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -101,6 +106,7 @@ namespace ProjetoDA.Forms
             }
         }
 
+        // verifica se o contribuinte é valido
         public bool IsValidContrib(string Contrib)
         {
             bool functionReturnValue = false;
@@ -142,16 +148,10 @@ namespace ProjetoDA.Forms
             return functionReturnValue;
         }
 
-        private void clienteSetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.clienteSetBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.imo_DADataSet);
-
-        }
-
+        //funçao de click da datagridview
         private void clienteSetDataGridView_Click(object sender, EventArgs e)
         {
+            //lista os dados do cliente nas textbox e nas listbox 
             int index = clienteSetDataGridView.CurrentCell.RowIndex;
 
             if (index == -1)
@@ -167,13 +167,14 @@ namespace ProjetoDA.Forms
             {
                 listBox1.DataSource = lista_cliente[index].Casas.ToList();
                 listBox2.DataSource = lista_cliente[index].Arrendamentos.ToList();
-                listBox3.DataSource = lista_cliente[index].Aquisicoes.ToList();
+                listBox3.DataSource = lista_cliente[index].Vendas.ToList();
             }catch(Exception)
             {
             }
             
         }
 
+        //função que limpa as caixas de texto
         private void bt_novo_Click(object sender, EventArgs e)
         {
             tb_nome.Text = "";
@@ -182,6 +183,7 @@ namespace ProjetoDA.Forms
             tb_contacto.Text = "";
         }
 
+        //função que filtra eprocura os dados na base de dados 
         private void bt_filtrar_Click(object sender, EventArgs e)
         {
             imoDA.Dispose();
@@ -262,10 +264,11 @@ namespace ProjetoDA.Forms
             }
         }
 
+        // função que apaga o cliente da base de dados se não exixtir nenhum relacionamento
         private void bt_apagar_Click(object sender, EventArgs e)
         {
             int index = clienteSetDataGridView.CurrentCell.RowIndex;
-          if (lista_cliente[index].Casas.ToList()!=null ||lista_cliente[index].Arrendamentos.ToList()!=null || lista_cliente[index].Aquisicoes.ToList() != null)
+          if (lista_cliente[index].Casas.ToList()!=null ||lista_cliente[index].Arrendamentos.ToList()!=null || lista_cliente[index].Vendas.ToList() != null)
             {
                 MessageBox.Show("Não é possivel apagar cliente. O cliente tem algo acosiado ","Apagar cliente",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
@@ -284,6 +287,7 @@ namespace ProjetoDA.Forms
 
         }
 
+        //função que abre o form casa quando selecionada 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
             int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
@@ -310,14 +314,12 @@ namespace ProjetoDA.Forms
             this.Show();
         }
 
-       
-
         private void Formarrendamento_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
         }
 
-
+        // função que abre o form arrendamento quando selecionada
         private void listBox2_DoubleClick(object sender, EventArgs e)
         {
             int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
@@ -332,12 +334,13 @@ namespace ProjetoDA.Forms
 
             Arrendamento arrenda = (Arrendamento)lista_arrendamento.ElementAt(index);
 
-            Arrendamentos formarrendamento = new Arrendamentos(arrenda.IdArrendamento);
+            Arrendamentos formarrendamento = new Arrendamentos(arrenda.CasaArrendavelIdCasa,true);
             formarrendamento.FormClosed += Formarrendamento_FormClosed;
             this.Hide();
             formarrendamento.Show();
         }
 
+        // função que abre o from vendas quando selecinada
         private void listBox3_DoubleClick(object sender, EventArgs e)
         {
             int index1 = clienteSetDataGridView.CurrentCell.RowIndex;
@@ -347,11 +350,11 @@ namespace ProjetoDA.Forms
                 return;
             }
             List<Venda> lista_vendas;
-            lista_vendas = lista_cliente[index].Aquisicoes.ToList();
+            lista_vendas = lista_cliente[index1].Vendas.ToList();
 
             Venda vendas = (Venda)lista_vendas.ElementAt(index);
 
-            Vendas formvendas = new Vendas(vendas.IdVenda);
+            Vendas formvendas = new Vendas(vendas.CasaVendavelIdCasa,true,vendas.IdVenda);
             formvendas.FormClosed += Formvendas_FormClosed;
             this.Hide();
             formvendas.Show();

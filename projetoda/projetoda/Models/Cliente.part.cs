@@ -8,6 +8,7 @@ namespace ProjetoDA.Models
 {
     public partial class Cliente 
     {
+        //construtor da classe Cliente que cria o cliente
         public Cliente(string nome, string nif, string morada, string contacto)
         {
             Nome = nome;
